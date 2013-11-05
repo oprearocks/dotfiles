@@ -14,7 +14,7 @@ filetype off
 let mapleader=","
 
 " Local dirs
-set backupdir=~/.vim/backups
+set backupdir=~/.vim-files/backups
 set undodir=~/.vim/undo
 
 " Set some junk
