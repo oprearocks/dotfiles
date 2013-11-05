@@ -8,7 +8,7 @@ function lsf() {
     ls -l | awk '{print $9}'
 }
 
-# Start webdav sync with Demadnware
+# Start webdav sync with Demadnware (please disregard)
 function davSync() {
     local davhome='/Users/adrianoprea/code/webdavSync'
     local configFolder='/Users/adrianoprea/code/webdavSync/config'

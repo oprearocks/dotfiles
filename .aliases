@@ -7,18 +7,27 @@ alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 alias dk="cd ~/Desktop"
+
+# Own shortcuts - please disregard
 alias proj="cd /Volumes/Grace/Projects"
 alias sources="cd /Volumes/Grace/Project_sources"
-alias openproj="open /qolumes/Grace/Projects"
-alias mvim="mvim -v"
+alias openproj="open /Volumes/Grace/Projects"
 alias db="cd /Volumes/Grace/Dropbox"
 alias opendb="open /Volumes/Grace/Dropbox"
 alias down="cd /Volumes/Grace/Downloads"
 alias opendown="open /Volumes/Grace/Downloads"
 alias docs="cd ~/Documents"
 alias opendocs="open ~/Documents"
-alias purge="sudo purge"
-alias ta="tmux attach -t"
+alias purge="sudo purge" # free my resources (needs Xcode)
+alias ta="tmux attach -t" # shorten the pain
+
+# Edit the dotfiles
+alias vimconf="mvim ~/dotfiles/.vimrc"
+alias functions="mvim ~/dotfiles/.functions"
+alias aliases="mvim ~/dotfiles/.aliases"
+alias gitconf="mvim ~/dotfiles/.gitconfig"
+alias gitignore="mvim ~/dotfiles/.gitignore"
+alias tmuxconf="mvim ~/dotfiles/.tmux.conf"
 
 # programs
 alias slt='open -a "Sublime Text"'
@@ -104,6 +113,7 @@ alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
 # Shortcuts
 alias g="git"
 alias v="vim"
+alias mvim="mvim -v" #start MacVim in console
 
 # File size
 alias fs="stat -f \"%z bytes\""
