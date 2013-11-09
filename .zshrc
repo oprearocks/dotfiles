@@ -44,7 +44,8 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=$PATH:/Library/Frameworks/Python.framework/Versions/3.3/bin:/usr/local/bin:/Users/adrianoprea/.rvm/gems/ruby-2.0.0-p247/bin:/Users/adrianoprea/.rvm/gems/ruby-2.0.0-p247@global/bin:/Users/adrianoprea/.rvm/rubies/ruby-2.0.0-p247/bin:/Users/adrianoprea/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Volumes/Dolores-HFS/android-sdk/sdk/tools:/Volumes/Dolores-HFS/android-sdk/sdk/platform-tools:/Users/adrianoprea/code/depot_tools
+export PATH="/usr/local/bin:$PATH"
+export PATH=/Library/Frameworks/Python.framework/Versions/3.3/bin:/Users/adrianoprea/.rvm/gems/ruby-2.0.0-p247/bin:/Users/adrianoprea/.rvm/gems/ruby-2.0.0-p247@global/bin:/Users/adrianoprea/.rvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Volumes/Dolores-HFS/android-sdk/sdk/tools:/Volumes/Dolores-HFS/android-sdk/sdk/platform-tools:/Users/adrianoprea/code/depot_tools
 
 # Load ~/.extra, ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
 # ~/.extra can be used for settings you don’t want to commit

@@ -1,11 +1,4 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/Volumes/Grace/Project_sources/dogeared/trunk/cartridges'
-let g:netrw_dirhist_2='/Users/adrianoprea/tmp'
-let g:netrw_dirhist_3='/Volumes/Grace/Project_sources/dogeared/trunk/cartridges'
-let g:netrw_dirhist_4='/Users/adrianoprea/Documents/GitHub/project_mtc/medicaltours.co.uk'
-let g:netrw_dirhist_5='/Users/adrianoprea'
-let g:netrw_dirhist_6='/Users/adrianoprea/Documents/GitHub/project_mtc/medicaltours.co.uk'
-let g:netrw_dirhist_7='/Users/adrianoprea/Documents/GitHub/offline/js'
-let g:netrw_dirhist_8='/Users/adrianoprea/Documents/GitHub/pages-js'
-let g:netrw_dirhist_9='/Volumes/Grace/Project_sources/dogeared/trunk/cartridges/core_dogeared/cartridge/templates/default/search/components'
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/Users/adrianoprea/code/geeknote'
+let g:netrw_dirhist_2='/Users/adrianoprea/Documents/GitHub/project_mtc/medicaltours.co.uk'

@@ -2,10 +2,12 @@
 set nocompatible
 
 " Set syntax highlighting options.
-set t_Co=256
+if $TERM == 'xterm-256color'
+    set t_Co=256
+endif
 set background=dark
 syntax  on
-colorscheme solarized
+colorscheme Solarized
 
 " Enabled later, after Pathogen
 filetype off
@@ -14,11 +16,11 @@ filetype off
 let mapleader=","
 
 " Local dirs
-set backupdir=~/.vim-files/backups
+set backupdir=~/.vim/backups
 set undodir=~/.vim/undo
 
 " Set some junk
-set clipboard+=unnamed
+set clipboard=unnamed
 set autoindent " Copy indent from last line when starting new line.
 set backspace=indent,eol,start
 set cursorline " Highlight current line
@@ -283,6 +285,7 @@ autocmd TabLeave * silent! :wa
 autocmd BufEnter *.ctp set filetype=php
 autocmd BufEnter *.less set filetype=less
 autocmd BufEnter *.scss set filetype=css
+autocmd BufEnter *.md set filetype=markdown
 autocmd BufEnter *.ds set filetype=javascript
 autocmd BufEnter *.json set filetype=javascript
 autocmd BufEnter *.isml set filetype=html
@@ -290,3 +293,5 @@ autocmd BufEnter *.ejs set filetype=html
 
 " JSHint stuff
 autocmd BufWritePost *.js JSHint
+
+let g:evervim_devtoken='S=s328:U=36116dc:E=14985a7b512:C=1422df68914:P=1cd:A=en-devtoken:V=2:H=c2ccc8f74ee658d965d35735a9abc05e'
