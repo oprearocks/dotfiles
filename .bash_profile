@@ -25,8 +25,8 @@ export LANG="en_US"
 # You could just use `-g` instead, but I like being explicit
 complete -W "NSGlobalDomain" defaults
 export PATH=/usr/local/bin:/Users/adrianoprea/.rvm/gems/ruby-2.0.0-p247/bin:/Users/adrianoprea/.rvm/gems/ruby-2.0.0-p247@global/bin:/Users/adrianoprea/.rvm/rubies/ruby-2.0.0-p247/bin:/Users/adrianoprea/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin
-export PATH=${PATH}:/Volumes/Dolores-HFS/android-sdk/sdk/tools
-export PATH=${PATH}:/Volumes/Dolores-HFS/android-sdk/sdk/platform-tools
+export PATH=${PATH}:/Volumes/Grace/android-sdk/sdk/tools
+export PATH=${PATH}:/Volumes/Grace/android-sdk/sdk/platform-tools
 export PATH=${PATH}:$HOME/code/depot_tools
 
 # Setting PATH for Python 3.3

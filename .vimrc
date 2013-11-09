@@ -16,8 +16,9 @@ filetype off
 let mapleader=","
 
 " Local dirs
-set backupdir=~/.vim/backups
-set undodir=~/.vim/undo
+set backupdir=$HOME/.vim/backups
+set undodir=$HOME/.vim/undo
+set directory=$HOME/.vim/swaps
 
 " Set some junk
 set clipboard=unnamed
