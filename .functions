@@ -16,6 +16,10 @@ function davSync() {
     # echo "$davhome/webdav_sync1_1_3.jar -c $configFolder/$1.xml"
 }
 
+function installcask() {
+    brew cask install "${@}" 2> /dev/null
+}
+
 
 # find shorthand
 function f() {

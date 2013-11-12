@@ -113,7 +113,8 @@ alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
 # Shortcuts
 alias g="git"
 alias v="vim"
-alias mvim="mvim -v" #start MacVim in console
+# start MacVim in console
+# alias mvim="mvim -v"
 
 # File size
 alias fs="stat -f \"%z bytes\""

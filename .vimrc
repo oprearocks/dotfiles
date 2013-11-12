@@ -8,7 +8,7 @@ endif
 set background=dark
 syntax  on
 colorscheme Solarized
-
+set guifont=Source\ Code\ Pro:h14
 " Enabled later, after Pathogen
 filetype off
 
@@ -294,5 +294,4 @@ autocmd BufEnter *.ejs set filetype=html
 
 " JSHint stuff
 autocmd BufWritePost *.js JSHint
-
-let g:evervim_devtoken='S=s328:U=36116dc:E=14985a7b512:C=1422df68914:P=1cd:A=en-devtoken:V=2:H=c2ccc8f74ee658d965d35735a9abc05e'
+so ~/.private
