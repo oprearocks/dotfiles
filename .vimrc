@@ -5,10 +5,10 @@ set nocompatible
 if $TERM == 'xterm-256color'
     set t_Co=256
 endif
-set background=dark
+set background=light
 syntax  on
 colorscheme Solarized
-set guifont=Source\ Code\ Pro:h14
+set guifont=Ubuntu\ Mono\ derivative\ Powerline:h16
 " Enabled later, after Pathogen
 filetype off
 
@@ -25,19 +25,31 @@ set clipboard=unnamed
 set autoindent " Copy indent from last line when starting new line.
 set backspace=indent,eol,start
 set cursorline " Highlight current line
-hi CursorLine cterm=none
+set showmatch " Show matching parens
+highlight CursorLine cterm=none
+highlight CursorLineNr ctermbg=none ctermfg=196 gui=bold,underline cterm=bold,underline term=bold,underline
 set diffopt=filler " Add vertical spaces to keep right and left aligned
 set diffopt+=iwhite " Ignore whitespace changes (focus on code changes)
 set encoding=utf-8 nobomb " BOM often causes trouble
 set esckeys " Allow cursor keys in insert mode.
 set expandtab " Expand tabs to spaces
-set foldcolumn=4 " Column to show folds
-set foldenable
-set foldlevel=1
-set foldlevelstart=1 " Sets `foldlevel` when editing a new buffer
-set foldmethod=syntax " Markers are used to specify folds.
-set foldminlines=0 " Allow folding single lines
-set foldnestmax=1 " Set max fold nesting level
+
+" Smarter code indenting {{{
+    nmap <D-[> <<
+    nmap <D-]> >>
+    vmap <D-[> <gv
+    vmap <D-]> >gv
+" }}}
+
+
+" Folding settings(Credits to Lokaltog) {{{
+    set foldcolumn=0
+    set foldenable
+    set foldlevel=0
+    set foldmethod=marker
+    set foldtext=FoldText()
+" }}}
+
 set t_ut=
 set formatoptions=
 set formatoptions+=c " Format comments
@@ -70,14 +82,15 @@ set ofu=syntaxcomplete#Complete " Set omni-completion method.
 set report=0 " Show all changes.
 set ruler " Show the cursor position
 set scrolloff=3 " Start scrolling three lines before horizontal border of window.
-set shiftwidth=4 " The # of spaces for indenting.
+set shiftwidth=4 " The # of spaces for indenting
 set shortmess=atI " Don't show the intro message when starting vim.
 set showmode " Show the current mode.
 set showtabline=4 " Always show tab bar.
 set sidescrolloff=3 " Start scrolling three columns before vertical border of window.
 set smartcase " Ignore 'ignorecase' if search patter contains uppercase characters.
 set smarttab " At start of line, <Tab> inserts shiftwidth spaces, <Bs> deletes shiftwidth spaces.
-set softtabstop=4 " Tab key results in 2 spaces
+set tabstop=4
+set softtabstop=4 " Tab key results in 4 spaces
 set splitbelow " New window goes below
 set splitright " New windows goes right
 set suffixes=.bak,~,.swp,.swo,.o,.d,.info,.aux,.log,.dvi,.pdf,.bin,.bbl,.blg,.brf,.cb,.dmg,.exe,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyd,.dll
@@ -85,20 +98,21 @@ set title " Show the filename in the window titlebar.
 set ttyfast " Send more characters at a given time.
 set ttymouse=xterm " Set mouse type to xterm.
 set undofile " Persistent Undo.
-set visualbell " Use visual bell instead of audible bell (annnnnoying)
+set vb " Use visual bell instead of audible bell (annnnnoying)
 set wildchar=<TAB> " Character for CLI expansion (TAB-completion).
 set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js
 set wildignore+=*/smarty/*,*/vendor/*,*/node_modules/*,*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*,*/log/*,*/tmp/*,*/build/*,*/ckeditor/*
 set wildmenu " Hitting TAB in command mode will show possible completions above command line.
-set wildmode=list:longest " Complete only until point of ambiguity.
+set wildmode=list:longest,full " Complete only until point of ambiguity.
 set winminheight=0 "Allow splits to be reduced to a single line.
 set wrapscan " Searches wrap around end of file
+set ttimeoutlen=100 " Decrease timeout for faster insert with 'O'
 
 " Status Line
-" hi User1 guibg=#455354 guifg=fg      ctermbg=238 ctermfg=fg  gui=bold,underline cterm=bold,underline term=bold,underline
-" hi User2 guibg=#455354 guifg=#CC4329 ctermbg=238 ctermfg=196 gui=bold           cterm=bold           term=bold
-" set statusline=[%n]\ %1*%<%.99t%*\ %2*%h%w%m%r%*%y[%{&ff}→%{strlen(&fenc)?&fenc:'No\ Encoding'}]%=%-16(\ L%l,C%c\ %)%P
-let g:Powerline_symbols = 'fancy'
+" hi User1 guibg=#455354 guifg=#CC4329 ctermbg=238 ctermfg=196   gui=bold,underline cterm=bold,underline term=bold,underline
+hi User2 guibg=#455354 guifg=#CC4329 ctermbg=238 ctermfg=196 gui=bold           cterm=bold           term=bold
+set statusline=[%n]\ %1*%<%.99t%*\ %2*%h%w%m%r%*%y[%{&ff}→%{strlen(&fenc)?&fenc:'No\ Encoding'}]%=%-16(\ L%l,C%c\ %)%P
+" let g:Powerline_symbols = 'fancy'
 
 " Speed up viewport scrolling
 nnoremap <C-e> 3<C-e>
@@ -159,10 +173,6 @@ endif
 " inoremap <Left>  <NOP>
 " inoremap <Right> <NOP>
 
-" Indent/unident block (,]) (,[)
-nnoremap <leader>] >i{<CR>
-nnoremap <leader>[ <i{<CR>
-
 " Paste toggle (,p)
 set pastetoggle=<leader>p
 map <leader>p :set invpaste paste?<CR>
@@ -220,10 +230,10 @@ map <PageDown> <C-D>
 imap <PageUp> <C-O><C-U>
 imap <PageDown> <C-O><C-D>
 
-" Make an useful save
-inoremap <leader>ss <esc>:w<cr>a
-nnoremap <leader>ss :w<cr>
-vnoremap <leader>ss <esc>:w<cr>
+" 'Save', but another way
+" inoremap <leader>ss <esc>:w<cr>a
+" nnoremap <leader>ss :w<cr>
+" vnoremap <leader>ss <esc>:w<cr>
 
 " Restore cursor position
 autocmd BufReadPost *
@@ -258,12 +268,19 @@ au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 au BufRead,BufNewFile .zsh_rc,.functions,.commonrc,.aliases set ft=zsh
 
 " CtrlP
-let g:ctrlp_match_window_bottom = 0 " Show at top of window
+let g:ctrlp_map = '<c-f>'
+let g:ctrlp_switch_buffer = 'Et' " If open, focus on file don't open it twice
+let g:ctrlp_match_window_bottom = 1 " Show at top of window
 let g:ctrlp_working_path_mode = 2 " Smart path mode
 let g:ctrlp_mru_files = 1 " Enable Most Recently Used files feature
 let g:ctrlp_jump_to_buffer = 2 " Jump to tab AND buffer if already open
 let g:ctrlp_split_window = 1 " <CR> = New Tab
+let g:ctrlp_max_height = 30 " Don't let CtrlP get too big
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+" Silver searcher settings
+map <leader>a :Ag!<space>
+map <leader>A :Ag! "<C-r>=expand('<cword>')<CR>"
 
 " Clojure.vim
 let g:vimclojure#ParenRainbow = 1 " Enable rainbow parens
@@ -277,9 +294,9 @@ nnoremap <leader>rp :RainbowParenthesesToggle<CR>
 autocmd bufwritepost .vimrc source <afile>
 
 " Auto save files when losing focus
-set autowriteall
-autocmd FocusLost * silent! :wa
-autocmd TabLeave * silent! :wa
+" set autowriteall
+" autocmd FocusLost * silent! :wa
+" autocmd TabLeave * silent! :wa
 
 " Filetype stuff
 
@@ -290,8 +307,12 @@ autocmd BufEnter *.md set filetype=markdown
 autocmd BufEnter *.ds set filetype=javascript
 autocmd BufEnter *.json set filetype=javascript
 autocmd BufEnter *.isml set filetype=html
+autocmd BufEnter *.mnw set filetype=html
 autocmd BufEnter *.ejs set filetype=html
 
 " JSHint stuff
 autocmd BufWritePost *.js JSHint
 so ~/.private
+" set rtp+=$HOME/powerline/powerline/bindings/vim " Vim powerline s'il vous plait !
+"Toggle autoclose.vim
+nmap <Leader>xa <Plug>ToggleAutoCloseMappings
