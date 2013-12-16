@@ -1,4 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =3
 let g:netrw_dirhist_1='/Users/adrianoprea/code/geeknote'
 let g:netrw_dirhist_2='/Users/adrianoprea/Documents/GitHub/project_mtc/medicaltours.co.uk'
+let g:netrw_dirhist_3='/Volumes/Grace/Project_sources/dogeared/trunk/cartridges'
