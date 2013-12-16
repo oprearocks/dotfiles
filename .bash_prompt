@@ -1,7 +1,7 @@
 # @gf3’s Sexy Bash Prompt, inspired by “Extravagant Zsh Prompt”
 # Shamelessly copied from https://github.com/gf3/dotfiles
 
-default_username='adrianoprea'
+default_username='username'
 
 if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
 	export TERM=gnome-256color
@@ -35,6 +35,22 @@ else
 	BOLD=""
 	RESET="\033[m"
 fi
+
+# ONLINE='${GREEN}◉'
+# OFFLINE='${MAGENTA}⦿'
+
+
+#function battery_charge {
+#   echo `~/code/bin/batcharge.py`
+#}
+
+#function prompt_online() {
+#   if [[ -f ~/.offline ]]; then
+#       echo $OFFLINE
+#   else
+#       echo $ONLINE
+#   fi
+#}
 
 
 function git_info() {
