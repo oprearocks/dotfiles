@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/Users/adrianoprea/code/geeknote'
 let g:netrw_dirhist_2='/Users/adrianoprea/Documents/GitHub/project_mtc/medicaltours.co.uk'
 let g:netrw_dirhist_3='/Volumes/Grace/Project_sources/dogeared/trunk/cartridges'
+let g:netrw_dirhist_4='/Users/adrianoprea/Documents/osf-js-eval/js-assessment 1/app'
