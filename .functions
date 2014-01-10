@@ -12,7 +12,7 @@ function lsf() {
 function davSync() {
     local davhome='/Users/adrianoprea/code/webdavSync'
     local configFolder='/Users/adrianoprea/code/webdavSync/config'
-    java -jar "$davhome/webdav_sync1_1_3.jar" -i 1 -c "$configFolder/$1.xml"
+    java -jar "$davhome/webdav_sync1_1_4.jar" -i 1 -c "$configFolder/$1.xml"
     # echo "$davhome/webdav_sync1_1_3.jar -c $configFolder/$1.xml"
 }
 
