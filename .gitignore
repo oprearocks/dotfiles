@@ -1,15 +1,11 @@
-# Compiled Python files
-*.pyc
-
-# Folder view configuration files
-.DS_Store
-Desktop.ini
+*.scssc
 .sass-cache
-
-# Thumbnail cache files
-._*
-Thumbs.db
-
-# Files that might appear on external disks
-.Spotlight-V100
-.Trashes
+build_tool
+.DS_Store
+node_modules
+*.scssc
+.DS_Store
+.project
+node_modules
+.gitignore
+bundle

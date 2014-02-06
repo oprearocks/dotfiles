@@ -1,5 +1,38 @@
 " Make vim more useful
 set nocompatible
+filetype off    " Required for Vundle
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Let Vundle manage itself
+Bundle 'gmarik/Vundle'
+
+" My Bundles
+Bundle 'rking/ag.vim'
+
+Bundle 'kien/ctrlp.vim'
+Bundle 'kien/rainbow_parentheses.vim'
+
+Bundle 'rizzatti/dash.vim'
+Bundle 'rizzatti/funcoo.vim'
+
+Bundle 'mattn/emmet-vim'
+Bundle 'mattn/webapi-vim'
+Bundle 'mattn/gist-vim'
+
+Bundle 'kakkyz81/evervim'
+Bundle 'chrisbra/histwin.vim'
+Bundle 'Keithbsmiley/investigate.vim'
+Bundle 'Shutnik/jshint2.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'msanders/snipmate.vim'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'terryma/vim-multiple-cursors'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-fugitive'
 
 " Set syntax highlighting options.
 if $TERM == 'xterm-256color'
@@ -9,8 +42,6 @@ set background=light
 syntax  on
 colorscheme Solarized
 set guifont=Ubuntu\ Mono\ derivative\ Powerline:h16
-" Enabled later, after Pathogen
-filetype off
 
 " Change mapleader
 let mapleader=","
@@ -34,21 +65,19 @@ set encoding=utf-8 nobomb " BOM often causes trouble
 set esckeys " Allow cursor keys in insert mode.
 set expandtab " Expand tabs to spaces
 
-" Smarter code indenting {{{
+" Smarter code indenting
     nmap <D-[> <<
     nmap <D-]> >>
     vmap <D-[> <gv
     vmap <D-]> >gv
-" }}}
 
 
-" Folding settings(Credits to Lokaltog) {{{
+" Folding settings(Credits to Lokaltog)
     set foldcolumn=0
     set foldenable
     set foldlevel=0
     set foldmethod=marker
     set foldtext=FoldText()
-" }}}
 
 set t_ut=
 set formatoptions=
@@ -112,7 +141,7 @@ set ttimeoutlen=100 " Decrease timeout for faster insert with 'O'
 " hi User1 guibg=#455354 guifg=#CC4329 ctermbg=238 ctermfg=196   gui=bold,underline cterm=bold,underline term=bold,underline
 hi User2 guibg=#455354 guifg=#CC4329 ctermbg=238 ctermfg=196 gui=bold           cterm=bold           term=bold
 set statusline=[%n]\ %1*%<%.99t%*\ %2*%h%w%m%r%*%y[%{&ff}→%{strlen(&fenc)?&fenc:'No\ Encoding'}]%=%-16(\ L%l,C%c\ %)%P
-" let g:Powerline_symbols = 'fancy'
+let g:Powerline_symbols = 'fancy'
 
 " Speed up viewport scrolling
 nnoremap <C-e> 3<C-e>
@@ -245,8 +274,6 @@ autocmd BufReadPost *
 set relativenumber " Use relative line numbers. Current line is still in status bar.
 au BufReadPost,BufNewFile * set relativenumber
 
-" Emulate bundles, allow plugins to live independantly. Easier to manage.
-call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
 
 " JSON
@@ -313,6 +340,6 @@ autocmd BufEnter *.ejs set filetype=html
 " JSHint stuff
 autocmd BufWritePost *.js JSHint
 so ~/.private
-" set rtp+=$HOME/powerline/powerline/bindings/vim " Vim powerline s'il vous plait !
+set rtp+=$HOME/powerline/powerline/bindings/vim " Vim powerline s'il vous plait !
 "Toggle autoclose.vim
 nmap <Leader>xa <Plug>ToggleAutoCloseMappings

@@ -3,6 +3,8 @@
 	email = opreaadriangeorge@gmail.com
 [alias]
 	c = commit -am
+    ck = checkout
+    ckb = checkout -b
 	up = pull
 	p = push
 	s = status -s
@@ -13,6 +15,7 @@
 [core]
 	excludesfile = ~/.gitignore
 	attributesfile = ~/.gitattributes
+	autocrlf = input
 [color "branch"]
 	current = yellow reverse
 	local = yellow
