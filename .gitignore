@@ -8,4 +8,4 @@ node_modules
 .project
 node_modules
 .gitignore
-bundle
+.vim/bundle
