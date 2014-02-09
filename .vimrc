@@ -34,6 +34,9 @@ Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
 
+" Keep codebases consistent
+Bundle 'editorconfig/editorconfig-vim'
+
 " Set syntax highlighting options.
 if $TERM == 'xterm-256color'
     set t_Co=256
@@ -328,9 +331,9 @@ autocmd bufwritepost .vimrc source <afile>
 " Filetype stuff
 
 autocmd BufEnter *.ctp set filetype=php
-autocmd BufEnter *.less set filetype=less
-autocmd BufEnter *.scss set filetype=css
 autocmd BufEnter *.md set filetype=markdown
+autocmd BufEnter *.less set filetype=css
+autocmd BufEnter *.scss set filetype=css
 autocmd BufEnter *.ds set filetype=javascript
 autocmd BufEnter *.json set filetype=javascript
 autocmd BufEnter *.isml set filetype=html
