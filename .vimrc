@@ -54,6 +54,9 @@ set backupdir=$HOME/.vim/backups
 set undodir=$HOME/.vim/undo
 set directory=$HOME/.vim/swaps
 
+let g:investigate_url_for_javascript="https://developer.mozilla.org/en-US/search?q=^s"
+let g:investigate_url_for_html="https://developer.mozilla.org/en-US/search?q=^s"
+let g:investigate_url_for_css="https://developer.mozilla.org/en-US/search?q=^s"
 " Set some junk
 set clipboard=unnamed
 set autoindent " Copy indent from last line when starting new line.

@@ -9,3 +9,6 @@ node_modules
 node_modules
 .gitignore
 .vim/bundle
+adrianoprea.properties
+.invrc
+.editorconfig

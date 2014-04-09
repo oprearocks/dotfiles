@@ -340,9 +340,9 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("javaScriptRepeat", s:purple, "", "")
 	call <SID>X("javaScriptNumber", s:orange, "", "")
 	call <SID>X("javaScriptMember", s:orange, "", "")
-    call <SID>X("javascriptNull", s:orange, "", "")
-    call <SID>X("javascriptGlobal", s:blue, "", "")
-    call <SID>X("javascriptStatement", s:red, "", "")
+	call <SID>X("javascriptNull", s:orange, "", "")
+	call <SID>X("javascriptGlobal", s:blue, "", "")
+	call <SID>X("javascriptStatement", s:red, "", "")
 
 	" HTML Highlighting
 	call <SID>X("htmlTag", s:red, "", "")
@@ -360,6 +360,14 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("ShowMarksHLu", s:yellow, s:background, "none")
 	call <SID>X("ShowMarksHLm", s:aqua, s:background, "none")
 
+	" Lua Highlighting
+	call <SID>X("luaStatement", s:purple, "", "")
+	call <SID>X("luaRepeat", s:purple, "", "")
+	call <SID>X("luaCondStart", s:purple, "", "")
+	call <SID>X("luaCondElseif", s:purple, "", "")
+	call <SID>X("luaCond", s:purple, "", "")
+	call <SID>X("luaCondEnd", s:purple, "", "")
+
 	" Cucumber Highlighting
 	call <SID>X("cucumberGiven", s:blue, "", "")
 	call <SID>X("cucumberGivenAnd", s:blue, "", "")
@@ -374,14 +382,6 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("goDeclType", s:blue, "", "")
 	call <SID>X("goBuiltins", s:purple, "", "")
 
-	" Lua Highlighting
-	call <SID>X("luaStatement", s:purple, "", "")
-	call <SID>X("luaRepeat", s:purple, "", "")
-	call <SID>X("luaCondStart", s:purple, "", "")
-	call <SID>X("luaCondElseif", s:purple, "", "")
-	call <SID>X("luaCond", s:purple, "", "")
-	call <SID>X("luaCondEnd", s:purple, "", "")
-	
 	" Clojure "highlighting
 	call <SID>X("clojureConstant", s:orange, "", "")
 	call <SID>X("clojureBoolean", s:orange, "", "")
@@ -406,7 +406,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("clojureAnonArg", s:blue, "", "")
 	call <SID>X("clojureRepeat", s:blue, "", "")
 	call <SID>X("clojureDispatch", s:blue, "", "")
-	
+
 	" Scala "highlighting
 	call <SID>X("scalaKeyword", s:purple, "", "")
 	call <SID>X("scalaKeywordModifier", s:purple, "", "")

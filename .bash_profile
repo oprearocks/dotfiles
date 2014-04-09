@@ -4,6 +4,7 @@ for file in ~/.{extra,bash_prompt,exports,aliases,functions}; do
 	[ -r "$file" ] && source "$file"
 done
 unset file
+set -o vi
 
 # init z   https://github.com/rupa/z
 . ~/code/z/z.sh
