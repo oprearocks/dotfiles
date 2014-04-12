@@ -32,6 +32,7 @@
 	untracked = cyan
 [merge]
 	log = true
+	tool = diffmerge
 [url "git@github.com:"]
 	insteadOf = "gh:"
 	pushInsteadOf = "github:"
@@ -57,6 +58,8 @@
 	tool = diffmerge
 [mergetool "diffmerge"]
 	trustExitCode = true
-	cmd = /usr/bin/diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+	cmd = diffmerge --merge --result=$MERGED $LOCAL $BASE $REMOTE
 [difftool "diffmerge"]
-	cmd = /usr/bin/diffmerge \"$LOCAL\" \"$REMOTE\"
+	cmd = diffmerge $LOCAL $REMOTE
+[mergetool]
+	keepBackup = false
