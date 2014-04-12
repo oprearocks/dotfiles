@@ -14,8 +14,8 @@ Bundle 'rking/ag.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'kien/rainbow_parentheses.vim'
 
-Bundle 'rizzatti/dash.vim'
-Bundle 'rizzatti/funcoo.vim'
+" Bundle 'rizzatti/dash.vim'
+" Bundle 'rizzatti/funcoo.vim'
 
 Bundle 'mattn/emmet-vim'
 Bundle 'mattn/webapi-vim'
@@ -43,7 +43,7 @@ if $TERM == 'xterm-256color'
 endif
 set background=light
 syntax  on
-colorscheme Solarized
+colorscheme solarized
 set guifont=Ubuntu\ Mono\ derivative\ Powerline:h16
 
 " Change mapleader
@@ -345,7 +345,7 @@ autocmd BufEnter *.ejs set filetype=html
 
 " JSHint stuff
 autocmd BufWritePost *.js JSHint
-so ~/.private
+" so ~/.private
 set rtp+=$HOME/powerline/powerline/bindings/vim " Vim powerline s'il vous plait !
 "Toggle autoclose.vim
 nmap <Leader>xa <Plug>ToggleAutoCloseMappings

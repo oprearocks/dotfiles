@@ -6,18 +6,10 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
-alias dk="cd ~/Desktop"
-
-# Own shortcuts - please disregard
-alias proj="cd /Volumes/Grace/Projects"
-alias sources="cd /Volumes/Grace/Project_sources"
-alias openproj="open /Volumes/Grace/Projects"
-alias db="cd /Volumes/Grace/Dropbox"
-alias opendb="open /Volumes/Grace/Dropbox"
-alias down="cd /Volumes/Grace/Downloads"
-alias opendown="open /Volumes/Grace/Downloads"
-alias docs="cd ~/Documents"
-alias opendocs="open ~/Documents"
+alias dk="cd $HOME/Desktop"
+alias dc="cd ~/Documents"
+alias dl="open $HOME/Downloads"
+alias db="cd $HOME/Dropbox"
 alias purge="sudo purge" # free my resources (needs Xcode)
 alias ta="tmux attach -t" # shorten the pain
 
@@ -29,20 +21,14 @@ alias gitconf="mvim ~/dotfiles/.gitconfig"
 alias gitignore="mvim ~/dotfiles/.gitignore"
 alias tmuxconf="mvim ~/dotfiles/.tmux.conf"
 
-# programs
-alias slt='open -a "Sublime Text"'
-# also/or do this:
-# ln -s "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" ~/bin/subl
-
-
 # be nice
 alias please=sudo
 alias hosts='sudo $EDITOR /etc/hosts'   # yes I occasionally 127.0.0.1 twitter.com ;)
 
 # handy things
-alias bunyip='node ~/code/bunyip/cli.js'
-alias spotify="osascript ~/code/SpotifyControl/SpotifyControl.scpt"
-alias vlc="osascript ~/code/VLCControl/VLCControl.scpt"
+# alias bunyip='node ~/code/bunyip/cli.js'
+# alias spotify="osascript ~/code/SpotifyControl/SpotifyControl.scpt"
+# alias vlc="osascript ~/code/VLCControl/VLCControl.scpt"
 
 
 # Detect which `ls` flavor is in use
