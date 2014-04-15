@@ -12,6 +12,9 @@ done
 unset file
 set -o vi
 
+# Initialise z shell
+. $HOME/code/z/z.sh
+
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
 

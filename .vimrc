@@ -33,9 +33,8 @@ Bundle 'jelera/vim-javascript-syntax'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
-
-" Keep codebases consistent
 Bundle 'editorconfig/editorconfig-vim'
+Bundle 'edsono/vim-matchit'
 
 " Set syntax highlighting options.
 if $TERM == 'xterm-256color'
