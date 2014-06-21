@@ -549,7 +549,7 @@ exe "hi! Constant"       .s:fmt_none   .s:fg_cyan   .s:bg_none
 "        Boolean         a boolean constant: TRUE, false
 "        Float           a floating point constant: 2.3e10
 
-exe "hi! Identifier"     .s:fmt_none   .s:fg_blue   .s:bg_none
+exe "hi! Identifier"     .s:fmt_bold   .s:fg_blue   .s:bg_none
 "       *Identifier      any variable name
 "        Function        function name (also: methods for classes)
 "
@@ -583,7 +583,7 @@ exe "hi! Special"        .s:fmt_none   .s:fg_red    .s:bg_none
 "        SpecialComment  special things inside a comment
 "        Debug           debugging statements
 
-exe "hi! Underlined"     .s:fmt_none   .s:fg_violet .s:bg_none
+exe "hi! Underlined"     .s:fmt_undr   .s:fg_violet .s:bg_none
 "       *Underlined      text that stands out, HTML links
 
 exe "hi! Ignore"         .s:fmt_none   .s:fg_none   .s:bg_none
@@ -594,7 +594,7 @@ exe "hi! Error"          .s:fmt_bold   .s:fg_red    .s:bg_none
 
 exe "hi! Todo"           .s:fmt_bold   .s:fg_magenta.s:bg_none
 "       *Todo            anything that needs extra attention; mostly the
-"                        keywords TODO FIXME and XXX
+"                        keywords TODO FIXME REVIEW HACK and XXX
 "
 "}}}
 " Extended highlighting "{{{

@@ -24,7 +24,8 @@ Bundle 'mattn/gist-vim'
 Bundle 'kakkyz81/evervim'
 Bundle 'chrisbra/histwin.vim'
 Bundle 'Keithbsmiley/investigate.vim'
-Bundle 'Shutnik/jshint2.vim'
+" Bundle 'Shutnik/jshint2.vim'
+Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdtree'
 Bundle 'msanders/snipmate.vim'
 Bundle 'tomtom/tcomment_vim'
@@ -35,6 +36,9 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
 Bundle 'editorconfig/editorconfig-vim'
 Bundle 'edsono/vim-matchit'
+Bundle 'opreaadrian/vim-github-colorscheme'
+Bundle 'heavenshell/vim-jsdoc'
+Plugin 'junegunn/vim-easy-align'
 
 " Set syntax highlighting options.
 if $TERM == 'xterm-256color'
@@ -42,8 +46,18 @@ if $TERM == 'xterm-256color'
 endif
 set background=light
 syntax  on
-colorscheme solarized
-set guifont=Ubuntu\ Mono\ derivative\ Powerline:h16
+colorscheme Tomorrow
+" Solarized color scheme options
+let g:solarized_contrast="high" 
+let g:solarized_visibility="low"
+let g:solarized_underline=0
+set guifont=Sauce\ Code\ Powerline:h16
+
+" Always write pretty code
+vmap <Enter> <Plug>(EasyAlign)
+
+" JSDoc plugin
+let g:jsdoc_default_mapping=0
 
 " Change mapleader
 let mapleader=","
@@ -52,6 +66,7 @@ let mapleader=","
 set backupdir=$HOME/.vim/backups
 set undodir=$HOME/.vim/undo
 set directory=$HOME/.vim/swaps
+set noswapfile
 
 let g:investigate_url_for_javascript="https://developer.mozilla.org/en-US/search?q=^s"
 let g:investigate_url_for_html="https://developer.mozilla.org/en-US/search?q=^s"
@@ -76,6 +91,9 @@ set expandtab " Expand tabs to spaces
     vmap <D-[> <gv
     vmap <D-]> >gv
 
+" Set up JSDoc plugin
+" let g:jsdoc_allow_input_prompt=1
+" let g:jsdoc_additional_descriptions=1
 
 " Folding settings(Credits to Lokaltog)
     set foldcolumn=0
@@ -116,7 +134,7 @@ set ofu=syntaxcomplete#Complete " Set omni-completion method.
 set report=0 " Show all changes.
 set ruler " Show the cursor position
 set scrolloff=3 " Start scrolling three lines before horizontal border of window.
-set shiftwidth=4 " The # of spaces for indenting
+set shiftwidth=2 " The # of spaces for indenting
 set shortmess=atI " Don't show the intro message when starting vim.
 set showmode " Show the current mode.
 set showtabline=4 " Always show tab bar.
@@ -211,6 +229,9 @@ endif
 set pastetoggle=<leader>p
 map <leader>p :set invpaste paste?<CR>
 
+" Faster autocomplete
+inoremap <C-space> <C-x><C-o>
+
 " NERD Commenter
 let NERDSpaceDelims=1
 let NERDCompactSexyComs=1
@@ -227,7 +248,7 @@ map <Leader>[ :bprev<CR>
 map <Leader>ls :buffers<CR>
 
 " Close Quickfix window (,qq)
-map <leader>qq :cclose<CR>
+map <leader>qq :close<CR>
 
 " Yank from cursor to end of line
 nnoremap Y y$
@@ -343,7 +364,8 @@ autocmd BufEnter *.mnw set filetype=html
 autocmd BufEnter *.ejs set filetype=html
 
 " JSHint stuff
-autocmd BufWritePost *.js JSHint
+" autocmd BufWritePost *.js JSHint
+
 " so ~/.private
 set rtp+=$HOME/powerline/powerline/bindings/vim " Vim powerline s'il vous plait !
 "Toggle autoclose.vim

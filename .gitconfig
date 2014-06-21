@@ -4,7 +4,8 @@
 [alias]
 	up = pull
 	p = push
-	df = diff --color --color-words --abbrev
+    # Show git diff for whatever file (very useful for *wildcard filenames)
+	df = diff --color --color-words --abbrev -- $1
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
     lgs = log --stat
 	# View abbreviated SHA, description, and history graph of the latest 20 commits
