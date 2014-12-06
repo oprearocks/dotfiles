@@ -1,0 +1,24 @@
+coreutils
+moreutils
+findutils
+bash
+
+wget --with-iri
+
+macvim --override-system-vim
+homebrew/dupes/grep
+
+ack
+pv
+git
+imagemagick --with-webp
+lynx
+node
+pigz
+rename
+rhino
+tree
+webkit2png
+zopfli
+p7zip
+tmux

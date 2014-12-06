@@ -36,7 +36,6 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
 Bundle 'editorconfig/editorconfig-vim'
 Bundle 'edsono/vim-matchit'
-Bundle 'opreaadrian/vim-github-colorscheme'
 Bundle 'heavenshell/vim-jsdoc'
 Plugin 'junegunn/vim-easy-align'
 
@@ -46,12 +45,12 @@ if $TERM == 'xterm-256color'
 endif
 set background=light
 syntax  on
-colorscheme Tomorrow
+colorscheme Molokai
 " Solarized color scheme options
 let g:solarized_contrast="high" 
 let g:solarized_visibility="low"
 let g:solarized_underline=0
-set guifont=Sauce\ Code\ Powerline:h16
+set guifont=Monaco:h14
 
 " Always write pretty code
 vmap <Enter> <Plug>(EasyAlign)
@@ -134,7 +133,7 @@ set ofu=syntaxcomplete#Complete " Set omni-completion method.
 set report=0 " Show all changes.
 set ruler " Show the cursor position
 set scrolloff=3 " Start scrolling three lines before horizontal border of window.
-set shiftwidth=2 " The # of spaces for indenting
+set shiftwidth=4 " The # of spaces for indenting
 set shortmess=atI " Don't show the intro message when starting vim.
 set showmode " Show the current mode.
 set showtabline=4 " Always show tab bar.
