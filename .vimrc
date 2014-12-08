@@ -39,18 +39,21 @@ Bundle 'edsono/vim-matchit'
 Bundle 'heavenshell/vim-jsdoc'
 Plugin 'junegunn/vim-easy-align'
 
+" Colors
+Plugin 'chriskempson/base16-vim'
+
 " Set syntax highlighting options.
 if $TERM == 'xterm-256color'
     set t_Co=256
 endif
-set background=light
+set background=dark
 syntax  on
-colorscheme Molokai
+colorscheme badwolf
 " Solarized color scheme options
-let g:solarized_contrast="high" 
+let g:solarized_contrast="high"
 let g:solarized_visibility="low"
 let g:solarized_underline=0
-set guifont=Monaco:h14
+set guifont=Monaco:h15
 
 " Always write pretty code
 vmap <Enter> <Plug>(EasyAlign)
@@ -198,7 +201,7 @@ imap VV ↓
 imap aa λ
 
 " Toggle show tabs and trailing spaces (,c)
-set lcs=tab:›\ ,trail:·,eol:¬,nbsp:_
+set lcs=tab:›\ ,trail:·,eol:¬,nbsp:_,extends:>,precedes:<
 set fcs=fold:-
 nnoremap <silent> <leader>c :set nolist!<CR>
 
