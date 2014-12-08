@@ -38,7 +38,9 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'editorconfig/editorconfig-vim'
 Bundle 'edsono/vim-matchit'
 Bundle 'heavenshell/vim-jsdoc'
+Bundle 'pangloss/vim-javascript'
 Plugin 'junegunn/vim-easy-align'
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 " Colors
 Plugin 'chriskempson/base16-vim'
@@ -52,6 +54,9 @@ syntax  on
 set background=dark
 
 let g:badwolf_tabline = 2
+" Turn on CSS properties highlighting
+let g:badwolf_css_props_highlight = 1
+
 colorscheme badwolf
 
 " Solarized color scheme options  {{{
@@ -441,8 +446,6 @@ autocmd BufEnter *.ejs set filetype=html
 " JSHint stuff
 " autocmd BufWritePost *.js JSHint
 
-" so ~/.private
-set rtp+=$HOME/powerline/powerline/bindings/vim " Vim powerline s'il vous plait !
 "Toggle autoclose.vim
 nmap <Leader>xa <Plug>ToggleAutoCloseMappings
 
@@ -562,7 +565,7 @@ command! -range MarkUnchanged call MarkUnchanged(<line1>, <line2>)
 if has('gui_running')
     " GUI Vim
 
-    set guifont=Monaco:h15
+    set guifont=Monaco\ for\ Powerline:h14
 
     " Remove all the UI cruft
     set go-=T
@@ -631,3 +634,4 @@ augroup END
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
+let javascript_enable_domhtmlcss=1
