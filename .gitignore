@@ -8,6 +8,9 @@ node_modules
 node_modules
 bower_components
 .vim/bundle
+.vim/tmp/undo/**/*
+.vim/tmp/backup/**/*
+.vim/tmp/swap/**/*
 adrianoprea.properties
 .invrc
 eclipse_workspace/
