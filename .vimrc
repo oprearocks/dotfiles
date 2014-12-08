@@ -1,3 +1,4 @@
+set shell=/bin/bash\ --login
 " Make vim more useful
 set nocompatible
 filetype off    " Required for Vundle
@@ -46,14 +47,19 @@ Plugin 'chriskempson/base16-vim'
 if $TERM == 'xterm-256color'
     set t_Co=256
 endif
-set background=dark
+
 syntax  on
+set background=dark
+
+let g:badwolf_tabline = 2
 colorscheme badwolf
-" Solarized color scheme options
+
+" Solarized color scheme options  {{{
 let g:solarized_contrast="high"
 let g:solarized_visibility="low"
 let g:solarized_underline=0
-set guifont=Monaco:h15
+" }}}
+
 
 " Always write pretty code
 vmap <Enter> <Plug>(EasyAlign)
@@ -64,17 +70,34 @@ let g:jsdoc_default_mapping=0
 " Change mapleader
 let mapleader=","
 
-" Local dirs
-set backupdir=$HOME/.vim/backups
-set undodir=$HOME/.vim/undo
-set directory=$HOME/.vim/swaps
-set noswapfile
+" Backups {{{
+
+set backup                        " enable backups
+set noswapfile                    " it's 2013, Vim.
+
+set undodir=~/.vim/tmp/undo/     " undo files
+set backupdir=~/.vim/tmp/backup/ " backups
+set directory=~/.vim/tmp/swap/  " swap files
+
+" Make those folders automatically if they don't already exist.
+if !isdirectory(expand(&undodir))
+    call mkdir(expand(&undodir), "p")
+endif
+if !isdirectory(expand(&backupdir))
+    call mkdir(expand(&backupdir), "p")
+endif
+if !isdirectory(expand(&directory))
+    call mkdir(expand(&directory), "p")
+endif
+
+" }}}
 
 let g:investigate_url_for_javascript="https://developer.mozilla.org/en-US/search?q=^s"
 let g:investigate_url_for_html="https://developer.mozilla.org/en-US/search?q=^s"
 let g:investigate_url_for_css="https://developer.mozilla.org/en-US/search?q=^s"
 " Set some junk
 set clipboard=unnamed
+set modelines=0
 set autoindent " Copy indent from last line when starting new line.
 set backspace=indent,eol,start
 set cursorline " Highlight current line
@@ -83,7 +106,7 @@ highlight CursorLine cterm=none
 highlight CursorLineNr ctermbg=none ctermfg=196 gui=bold,underline cterm=bold,underline term=bold,underline
 set diffopt=filler " Add vertical spaces to keep right and left aligned
 set diffopt+=iwhite " Ignore whitespace changes (focus on code changes)
-set encoding=utf-8 nobomb " BOM often causes trouble
+set encoding=utf-8 " BOM often causes trouble
 set esckeys " Allow cursor keys in insert mode.
 set expandtab " Expand tabs to spaces
 
@@ -152,6 +175,7 @@ set title " Show the filename in the window titlebar.
 set ttyfast " Send more characters at a given time.
 set ttymouse=xterm " Set mouse type to xterm.
 set undofile " Persistent Undo.
+set undoreload=10000
 set vb " Use visual bell instead of audible bell (annnnnoying)
 set wildchar=<TAB> " Character for CLI expansion (TAB-completion).
 set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js
@@ -161,6 +185,32 @@ set wildmode=list:longest,full " Complete only until point of ambiguity.
 set winminheight=0 "Allow splits to be reduced to a single line.
 set wrapscan " Searches wrap around end of file
 set ttimeoutlen=100 " Decrease timeout for faster insert with 'O'
+set list
+set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
+set lazyredraw
+set matchtime=3
+set showbreak=↪
+set splitbelow
+set splitright
+set autowrite
+set autoread
+set shiftround
+set title
+set linebreak
+set colorcolumn=100
+set visualbell
+
+
+" set fillchars=diff:⣿,vert:│
+" set fillchars=diff:⣿,vert:\|
+
+" Don't try to highlight lines longer than 800 characters.
+set synmaxcol=800
+
+
+" Better Completion
+set complete=.,w,b,u,t
+set completeopt=longest,menuone,preview
 
 " Status Line
 " hi User1 guibg=#455354 guifg=#CC4329 ctermbg=238 ctermfg=196   gui=bold,underline cterm=bold,underline term=bold,underline
@@ -234,14 +284,35 @@ map <leader>p :set invpaste paste?<CR>
 " Faster autocomplete
 inoremap <C-space> <C-x><C-o>
 
+
 " NERD Commenter
 let NERDSpaceDelims=1
 let NERDCompactSexyComs=1
 let g:NERDCustomDelimiters = { 'racket': { 'left': ';', 'leftAlt': '#|', 'rightAlt': '|#' } }
 
-" NERDTree config
+" NERDTree config  {{{
 nnoremap <leader>n :NERDTreeToggle<cr>
 nnoremap <leader>f :NERDTreeClose<cr>:NERDTreeFind<cr>
+
+augroup ps_nerdtree
+    au!
+
+    au Filetype nerdtree setlocal nolist
+    au Filetype nerdtree nnoremap <buffer> H :vertical resize -10<cr>
+    au Filetype nerdtree nnoremap <buffer> L :vertical resize +10<cr>
+    " au Filetype nerdtree nnoremap <buffer> K :q<cr>
+augroup END
+ 
+let NERDTreeHighlightCursorline = 1
+let NERDTreeIgnore = ['.vim$', '\~$', '.*\.pyc$', 'pip-log\.txt$', 'whoosh_index',
+                    \ 'xapian_index', '.*.pid', 'monitor.py', '.*-fixtures-.*.json',
+                    \ '.*\.o$', 'db.db', 'tags.bak', '.*\.pdf$', '.*\.mid$',
+                    \ '.*\.midi$']
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let NERDChristmasTree = 0
+let NERDTreeChDirMode = 2
+"}}}
 
 " Buffer navigation (,,) (,]) (,[) (,ls)
 map <Leader>, <C-^>
@@ -322,7 +393,8 @@ au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 " ZSH
 au BufRead,BufNewFile .zsh_rc,.functions,.commonrc,.aliases set ft=zsh
 
-" CtrlP
+" CtrlP {{{
+let g:ctrlp_dont_split = 'NERD_tree_2'
 let g:ctrlp_map = '<c-f>'
 let g:ctrlp_switch_buffer = 'Et' " If open, focus on file don't open it twice
 let g:ctrlp_match_window_bottom = 1 " Show at top of window
@@ -332,6 +404,7 @@ let g:ctrlp_jump_to_buffer = 2 " Jump to tab AND buffer if already open
 let g:ctrlp_split_window = 1 " <CR> = New Tab
 let g:ctrlp_max_height = 30 " Don't let CtrlP get too big
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+" }}}
 
 " Silver searcher settings
 map <leader>a :Ag!<space>
@@ -372,3 +445,189 @@ autocmd BufEnter *.ejs set filetype=html
 set rtp+=$HOME/powerline/powerline/bindings/vim " Vim powerline s'il vous plait !
 "Toggle autoclose.vim
 nmap <Leader>xa <Plug>ToggleAutoCloseMappings
+
+" Pulse Line {{{
+
+function! s:Pulse() " {{{
+    redir => old_hi
+        silent execute 'hi CursorLine'
+    redir END
+    let old_hi = split(old_hi, '\n')[0]
+    let old_hi = substitute(old_hi, 'xxx', '', '')
+
+    let steps = 8
+    let width = 1
+    let start = width
+    let end = steps * width
+    let color = 233
+
+    for i in range(start, end, width)
+        execute "hi CursorLine ctermbg=" . (color + i)
+        redraw
+        sleep 6m
+    endfor
+    for i in range(end, start, -1 * width)
+        execute "hi CursorLine ctermbg=" . (color + i)
+        redraw
+        sleep 6m
+    endfor
+
+    execute 'hi ' . old_hi
+endfunction " }}}
+command! -nargs=0 Pulse call s:Pulse()
+
+" }}}
+
+" Highlight Word {{{
+"
+" This mini-plugin provides a few mappings for highlighting words temporarily.
+"
+" Sometimes you're looking at a hairy piece of code and would like a certain
+" word or two to stand out temporarily.  You can search for it, but that only
+" gives you one color of highlighting.  Now you can use <leader>N where N is
+" a number from 1-6 to highlight the current word in a specific color.
+
+function! HiInterestingWord(n)
+    " Save our location.
+    normal! mz
+
+    " Yank the current word into the z register.
+    normal! "zyiw
+
+    " Calculate an arbitrary match ID.  Hopefully nothing else is using it.
+    let mid = 86750 + a:n
+
+    " Clear existing matches, but don't worry if they don't exist.
+    silent! call matchdelete(mid)
+
+    " Construct a literal pattern that has to match at boundaries.
+    let pat = '\V\<' . escape(@z, '\') . '\>'
+
+    " Actually match the words.
+    call matchadd("InterestingWord" . a:n, pat, 1, mid)
+
+    " Move back to our original location.
+    normal! `z
+endfunction " }}}
+
+" Mappings {{{
+
+nnoremap <silent> <leader>1 :call HiInterestingWord(1)<cr>
+nnoremap <silent> <leader>2 :call HiInterestingWord(2)<cr>
+nnoremap <silent> <leader>3 :call HiInterestingWord(3)<cr>
+nnoremap <silent> <leader>4 :call HiInterestingWord(4)<cr>
+nnoremap <silent> <leader>5 :call HiInterestingWord(5)<cr>
+nnoremap <silent> <leader>6 :call HiInterestingWord(6)<cr>
+
+" }}}" Default Highlights {{{
+
+hi def InterestingWord1 guifg=#000000 ctermfg=16 guibg=#ffa724 ctermbg=214
+hi def InterestingWord2 guifg=#000000 ctermfg=16 guibg=#aeee00 ctermbg=154
+hi def InterestingWord3 guifg=#000000 ctermfg=16 guibg=#8cffba ctermbg=121
+hi def InterestingWord4 guifg=#000000 ctermfg=16 guibg=#b88853 ctermbg=137
+hi def InterestingWord5 guifg=#000000 ctermfg=16 guibg=#ff9eb8 ctermbg=211
+hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
+
+" }}}
+
+" MarkChanged {{{
+
+sign define line_changed text=+ texthl=DiffAdded
+
+function! MarkChanged(s, e)
+    for i in range(a:s, a:e)
+        exe ":sign place " . i . " line=" . i . " name=line_changed file=" . expand("%:p")
+    endfor
+endfunction
+
+function! MarkUnchanged(s, e)
+    for i in range(a:s, a:e)
+        call cursor(i, 0)
+        silent! sign unplace
+    endfor
+endfunction
+
+command! -range MarkChanged call MarkChanged(<line1>, <line2>)
+command! -range MarkUnchanged call MarkUnchanged(<line1>, <line2>)
+
+" nnoremap <leader>m :MarkChanged<cr>
+" vnoremap <leader>m :MarkChanged<cr>
+" nnoremap <leader>M :MarkUnchanged<cr>
+" vnoremap <leader>M :MarkUnchanged<cr>
+
+" }}}
+ 
+" Environments (GUI/Console) ---------------------------------------------- {{{
+
+if has('gui_running')
+    " GUI Vim
+
+    set guifont=Monaco:h15
+
+    " Remove all the UI cruft
+    set go-=T
+    set go-=l
+    set go-=L
+    set go-=r
+    set go-=R
+
+    highlight SpellBad term=underline gui=undercurl guisp=Orange
+
+    " Different cursors for different modes.
+    set guicursor=n-c:block-Cursor-blinkon0
+    set guicursor+=v:block-vCursor-blinkon0
+    set guicursor+=i-ci:ver20-iCursor
+
+    if has("gui_macvim")
+        " Full screen means FULL screen
+        set fuoptions=maxvert,maxhorz
+
+        " Use the normal HIG movements, except for M-Up/Down
+        let macvim_skip_cmd_opt_movement = 1
+        no   <D-Left>       <Home>
+        no!  <D-Left>       <Home>
+        no   <M-Left>       <C-Left>
+        no!  <M-Left>       <C-Left>
+
+        no   <D-Right>      <End>
+        no!  <D-Right>      <End>
+        no   <M-Right>      <C-Right>
+        no!  <M-Right>      <C-Right>
+
+        no   <D-Up>         <C-Home>
+        ino  <D-Up>         <C-Home>
+        imap <M-Up>         <C-o>{
+
+        no   <D-Down>       <C-End>
+        ino  <D-Down>       <C-End>
+        imap <M-Down>       <C-o>}
+
+        imap <M-BS>         <C-w>
+        inoremap <D-BS>     <esc>my0c`y
+    else
+        " Non-MacVim GUI, like Gvim
+    end
+else
+    " Console Vim
+    " For me, this means iTerm2, possibly through tmux
+
+    " Mouse support
+    set mouse=a
+endif
+
+" }}}
+
+" Cursorline {{{
+" Only show cursorline in the current window and in normal mode.
+
+augroup cline
+    au!
+    au WinLeave,InsertEnter * set nocursorline
+    au WinEnter,InsertLeave * set cursorline
+augroup END
+
+" }}}
+
+" Highlight VCS conflict markers
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
