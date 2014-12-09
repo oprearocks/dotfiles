@@ -2,7 +2,7 @@
 set nocompatible
 filetype off    " Required for Vundle
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle
 call vundle#rc()
 
 " Let Vundle manage itself
@@ -48,13 +48,19 @@ if $TERM == 'xterm-256color'
 endif
 set background=dark
 syntax  on
-colorscheme badwolf
+"
 " Solarized color scheme options
-let g:solarized_contrast="high"
-let g:solarized_visibility="low"
+let g:solarized_visibility="normal"
 let g:solarized_underline=0
-set guifont=Monaco:h15
+let g:solarized_termcolors=256
+let g:solarized_bold=1
+let g:solarized_underline=1
+let g:solarized_italic=1
+colorscheme solarized
 
+
+set guifont=Monaco:h13
+set cc=100
 " Always write pretty code
 vmap <Enter> <Plug>(EasyAlign)
 
@@ -244,7 +250,7 @@ nnoremap <leader>n :NERDTreeToggle<cr>
 nnoremap <leader>f :NERDTreeClose<cr>:NERDTreeFind<cr>
 
 " Buffer navigation (,,) (,]) (,[) (,ls)
-map <Leader>, <C-^>
+" map <Leader>, <C-^>
 map <Leader>] :bnext<CR>
 map <Leader>[ :bprev<CR>
 map <Leader>ls :buffers<CR>
