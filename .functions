@@ -17,7 +17,7 @@ function davSync() {
 }
 
 function svndiff() {
-    svn diff --diff-cmd colordiff "${@}"
+    svn diff "${@}" | colordiff | less -R
 }
 
 function installcask() {

@@ -54,11 +54,16 @@ syntax  on
 
 set background=dark
 
+" Twilight color scheme options
+" {{{
+colorscheme twilight
+" }}}
+
 " Badwolf color scheme options 
 " {{{
-let g:badwolf_tabline = 2
-let g:badwolf_css_props_highlight = 1
-colorscheme badwolf
+" let g:badwolf_tabline = 2
+" let g:badwolf_css_props_highlight = 1
+" colorscheme badwolf
 "}}}
 
 " Solarized color scheme options
@@ -118,8 +123,8 @@ set autoindent " Copy indent from last line when starting new line.
 set backspace=indent,eol,start
 set cursorline " Highlight current line
 set showmatch " Show matching parens
-highlight CursorLine cterm=none
-highlight CursorLineNr ctermbg=none ctermfg=196 gui=bold,underline cterm=bold,underline term=bold,underline
+" highlight CursorLine cterm=none
+" highlight CursorLineNr ctermbg=none ctermfg=196 gui=bold,underline cterm=bold,underline term=bold,underline
 set diffopt=filler " Add vertical spaces to keep right and left aligned
 set diffopt+=iwhite " Ignore whitespace changes (focus on code changes)
 set encoding=utf-8 " BOM often causes trouble
@@ -204,7 +209,7 @@ set winminheight=0 "Allow splits to be reduced to a single line.
 set wrapscan " Searches wrap around end of file
 set ttimeoutlen=100 " Decrease timeout for faster insert with 'O'
 set list
-set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
+set listchars=tab:▸\ ,eol:¬,trail:·,extends:❯,precedes:❮
 set lazyredraw
 set matchtime=3
 set showbreak=↪
@@ -219,8 +224,7 @@ set colorcolumn=100
 set visualbell
 
 
-" set fillchars=diff:⣿,vert:│
-" set fillchars=diff:⣿,vert:\|
+set fillchars+=diff:⣿,vert:│
 
 " Don't try to highlight lines longer than 800 characters.
 set synmaxcol=800
@@ -232,8 +236,8 @@ set completeopt=longest,menuone,preview
 
 " Status Line
 " hi User1 guibg=#455354 guifg=#CC4329 ctermbg=238 ctermfg=196   gui=bold,underline cterm=bold,underline term=bold,underline
-hi User2 guibg=#455354 guifg=#CC4329 ctermbg=238 ctermfg=196 gui=bold           cterm=bold           term=bold
-set statusline=[%n]\ %1*%<%.99t%*\ %2*%h%w%m%r%*%y[%{&ff}→%{strlen(&fenc)?&fenc:'No\ Encoding'}]%=%-16(\ L%l,C%c\ %)%P
+" hi User2 guibg=#455354 guifg=#CC4329 ctermbg=238 ctermfg=196 gui=bold           cterm=bold           term=bold
+" set statusline=[%n]\ %1*%<%.99t%*\ %2*%h%w%m%r%*%y[%{&ff}→%{strlen(&fenc)?&fenc:'No\ Encoding'}]%=%-16(\ L%l,C%c\ %)%P
 let g:Powerline_symbols = 'fancy'
 
 " Speed up viewport scrolling
@@ -268,8 +272,6 @@ imap ^^ ↑
 imap VV ↓
 imap aa λ
 
-" Toggle show tabs and trailing spaces (,c)
-set lcs=tab:›\ ,trail:·,eol:¬,nbsp:_,extends:>,precedes:<
 set fcs=fold:-
 nnoremap <silent> <leader>c :set nolist!<CR>
 
@@ -277,14 +279,6 @@ nnoremap <silent> <leader>c :set nolist!<CR>
 map <silent> <leader>qs <Esc>:noh<CR>
 " map <silent> <leader>qs <Esc>:let @/ = ""<CR>
 
-" Vim on the iPad
-if &term == "xterm-ipad"
-  nnoremap <Tab> <Esc>
-  vnoremap <Tab> <Esc>gV
-  onoremap <Tab> <Esc>
-  inoremap <Tab> <Esc>`^
-  inoremap <Leader><Tab> <Tab>
-endif
 
 " Remap keys for auto-completion, disable arrow keys
 " I still need these cuz im nub. so nub.
@@ -301,7 +295,6 @@ map <leader>p :set invpaste paste?<CR>
 
 " Faster autocomplete
 inoremap <C-space> <C-x><C-o>
-
 
 " NERD Commenter
 let NERDSpaceDelims=1
@@ -411,7 +404,8 @@ au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 " ZSH
 au BufRead,BufNewFile .zsh_rc,.functions,.commonrc,.aliases set ft=zsh
 
-" CtrlP {{{
+" CtrlP 
+" {{{
 let g:ctrlp_dont_split = 'NERD_tree_2'
 let g:ctrlp_map = '<c-f>'
 let g:ctrlp_switch_buffer = 'Et' " If open, focus on file don't open it twice
@@ -451,6 +445,7 @@ autocmd BufEnter *.md set filetype=markdown
 autocmd BufEnter *.less set filetype=css
 autocmd BufEnter *.scss set filetype=css
 autocmd BufEnter *.ds set filetype=javascript
+autocmd BufEnter *.es6 set filetype=javascript
 autocmd BufEnter *.json set filetype=javascript
 autocmd BufEnter *.isml set filetype=html
 autocmd BufEnter *.mnw set filetype=html
@@ -588,12 +583,7 @@ if has('gui_running')
     set go-=R
 
     highlight SpellBad term=underline gui=undercurl guisp=Orange
-
-    " Different cursors for different modes.
-    set guicursor=n-c:block-Cursor-blinkon0
-    set guicursor+=v:block-vCursor-blinkon0
-    set guicursor+=i-ci:ver20-iCursor
-
+    
     if has("gui_macvim")
         " Full screen means FULL screen
         set fuoptions=maxvert,maxhorz
