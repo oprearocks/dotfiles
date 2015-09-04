@@ -86,7 +86,7 @@
 [credential]
 	helper = osxkeychain
 [push]
-	default = current
+	default = simple
 [diff]
 	tool = diffmerge
 [mergetool "diffmerge"]
