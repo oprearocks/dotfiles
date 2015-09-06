@@ -1,51 +1,42 @@
-set shell=/usr/local/bin/fish\ --login
+set shell=/bin/bash\ --login
 " Make vim more useful
 set nocompatible
 filetype off    " Required for Vundle
 
-set rtp+=~/.vim/bundle/Vundle
-call vundle#rc()
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " Let Vundle manage itself
-Bundle 'gmarik/Vundle'
+Plugin 'VundleVim/Vundle.vim'
 
-" My Bundles
-Bundle 'rking/ag.vim'
-
-Bundle 'kien/ctrlp.vim'
-Bundle 'kien/rainbow_parentheses.vim'
-
-" Bundle 'rizzatti/dash.vim'
-" Bundle 'rizzatti/funcoo.vim'
-
-Bundle 'mattn/emmet-vim'
-Bundle 'mattn/webapi-vim'
-Bundle 'mattn/gist-vim'
-
-Bundle 'kakkyz81/evervim'
-Bundle 'chrisbra/histwin.vim'
-Bundle 'Keithbsmiley/investigate.vim'
-" Bundle 'Shutnik/jshint2.vim'
-" Bundle 'scrooloose/syntastic'
-Bundle 'scrooloose/nerdtree'
-Bundle 'msanders/snipmate.vim'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-fugitive'
-Bundle 'editorconfig/editorconfig-vim'
-Bundle 'edsono/vim-matchit'
-Bundle 'heavenshell/vim-jsdoc'
-Bundle 'pangloss/vim-javascript'
+" My Plugins
+Plugin 'rking/ag.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'rizzatti/funcoo.vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'mattn/gist-vim'
+Plugin 'chrisbra/histwin.vim'
+Plugin 'Keithbsmiley/investigate.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'edsono/vim-matchit'
+Plugin 'heavenshell/vim-jsdoc'
+Plugin 'pangloss/vim-javascript'
 Plugin 'junegunn/vim-easy-align'
 
-" Colors
-Plugin 'chriskempson/base16-vim'
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
 
 let g:syntastic_javascript_checkers = ['eslint']
-
 " Set syntax highlighting options.
 if $TERM == 'xterm-256color'
     set t_Co=256
@@ -157,7 +148,8 @@ set formatoptions+=l " Don't break lines that are already long
 set formatoptions+=1 " Break before 1-letter words
 set gdefault " By default add g flag to search/replace. Add g to toggle.
 set hidden " When a buffer is brought to foreground, remember undo history and marks.
-set history=1000 " Increase history from 20 default to 1000
+set history=500 " Increase history from 20 default to 1000
+set viminfo+=!
 set hlsearch " Highlight searches
 set ignorecase " Ignore case of searches.
 set incsearch " Highlight dynamically as pattern is typed.
@@ -180,7 +172,6 @@ set shiftwidth=4 " The # of spaces for indenting
 set shortmess=atI " Don't show the intro message when starting vim.
 set showmode " Show the current mode.
 set showtabline=2 " Always show tab bar.
-set noshowmode " Hide the default mode text
 set sidescrolloff=3 " Start scrolling three columns before vertical border of window.
 set smartcase " Ignore 'ignorecase' if search patter contains uppercase characters.
 set smarttab " At start of line, <Tab> inserts shiftwidth spaces, <Bs> deletes shiftwidth spaces.
@@ -191,7 +182,6 @@ set splitright " New windows goes right
 set suffixes=.bak,~,.swp,.swo,.o,.d,.info,.aux,.log,.dvi,.pdf,.bin,.bbl,.blg,.brf,.cb,.dmg,.exe,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyd,.dll
 set title " Show the filename in the window titlebar.
 set ttyfast " Send more characters at a given time.
-set ttymouse=xterm " Set mouse type to xterm.
 set undofile " Persistent Undo.
 set undoreload=10000
 set vb " Use visual bell instead of audible bell (annnnnoying)
@@ -203,6 +193,7 @@ set wildmode=list:longest,full " Complete only until point of ambiguity.
 set winminheight=0 "Allow splits to be reduced to a single line.
 set wrapscan " Searches wrap around end of file
 set ttimeoutlen=100 " Decrease timeout for faster insert with 'O'
+set timeoutlen=500
 set list
 set listchars=tab:▸\ ,eol:¬,trail:·,extends:❯,precedes:❮
 set lazyredraw
@@ -409,6 +400,11 @@ let g:ctrlp_mru_files = 1 " Enable Most Recently Used files feature
 let g:ctrlp_jump_to_buffer = 2 " Jump to tab AND buffer if already open
 let g:ctrlp_split_window = 1 " <CR> = New Tab
 let g:ctrlp_max_height = 30 " Don't let CtrlP get too big
+
+" Make CtrlP use ag for listing the files. Way faster and no useless files.
+" Without --hidden, it never finds .travis.yml since it starts with a dot
+let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
+let g:ctrlp_use_caching = 0
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 " }}}
 
