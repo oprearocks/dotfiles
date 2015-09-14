@@ -50,6 +50,7 @@
 	excludesfile = ~/.gitignore
 	attributesfile = ~/.gitattributes
 	autocrlf = input
+	editor = nvim
 [color "branch"]
 	current = yellow reverse
 	local = yellow
