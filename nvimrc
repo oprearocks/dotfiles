@@ -38,7 +38,7 @@ endif
 " Colorscheme
 " {{{
 set background=light
-colorscheme Tomorrow
+colorscheme molotov
 " }}}
 
 let javascript_enable_domhtmlcss=1
@@ -78,6 +78,13 @@ set wrapscan
 set synmaxcol=800
 set title
 set linebreak
+" }}}
+
+" Local directories 
+" {{{
+set backupdir=~/.nvim/backups
+set directory=~/.nvim/swaps
+set undodir=~/.nvim/undo
 " }}}
 
 " Change mapleader
@@ -296,7 +303,7 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 " airline.vim
 " {{{
-let g:airline_powerline_fonts = 1 
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 " }}}
 "
@@ -332,7 +339,7 @@ augroup ps_nerdtree
     au Filetype nerdtree nnoremap <buffer> L :vertical resize +10<cr>
     " au Filetype nerdtree nnoremap <buffer> K :q<cr>
 augroup END
- 
+
 let NERDTreeHighlightCursorline = 1
 let NERDTreeIgnore = ['.vim$', '\~$', '.*\.pyc$', 'pip-log\.txt$', 'whoosh_index',
                     \ 'xapian_index', '.*.pid', 'monitor.py', '.*-fixtures-.*.json',
