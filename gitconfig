@@ -88,15 +88,22 @@
 	helper = osxkeychain
 [push]
 	default = simple
-[diff]
-	tool = diffmerge
-[mergetool "diffmerge"]
-	trustExitCode = true
-	cmd = diffmerge --merge --result=$MERGED $LOCAL $BASE $REMOTE
-[difftool "diffmerge"]
-	cmd = diffmerge $LOCAL $REMOTE
+
+[filter "media"]
+  clean  = git-media-clean %f
+  smudge = git-media-smudge %f
+
+[difftool "diffconflicts"]
+  cmd = diffconflicts mvim $BASE $LOCAL $REMOTE $MERGED
+
+[mergetool "diffconflicts"]
+  cmd           = diffconflicts mvim $BASE $LOCAL $REMOTE $MERGED
+  trustExitCode = true
+  keepBackup    = false
+
 [mergetool]
 	keepBackup = false
+
 [filter "lfs"]
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f
