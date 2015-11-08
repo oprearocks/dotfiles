@@ -1,3 +1,5 @@
+export CLICOLOR=1
+
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 PATH=/usr/local/bin:$PATH
 # Add `~/bin` to the `$PATH`
@@ -43,12 +45,3 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 # If possible, add tab completion for many more commands
 [ -f /etc/bash_completion ] && source /etc/bash_completion
 
-export DOCKER_TLS_VERIFY=1
-export DOCKER_HOST=tcp://192.168.59.103:2376
-export DOCKER_CERT_PATH=/Users/adrian/.boot2docker/certs/boot2docker-vm
-
-###-tns-completion-start-###
-if [ -f /Users/adrian/.tnsrc ]; then 
-    source /Users/adrian/.tnsrc 
-fi
-###-tns-completion-end-###
