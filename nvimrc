@@ -1,4 +1,4 @@
-set shell=/usr/local/bin/fish
+set shell=/bin/bash
 
 " ==== PLUGIN INSTALLATION ===
 " {{{
@@ -13,7 +13,7 @@ Plug 'mattn/gist-vim'
 Plug 'chrisbra/histwin.vim'
 Plug 'Keithbsmiley/investigate.vim'
 Plug 'scrooloose/syntastic'
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle' }
 Plug 'tomtom/tcomment_vim'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'jelera/vim-javascript-syntax'
@@ -37,7 +37,7 @@ endif
 
 " Colorscheme
 " {{{
-set background=light
+set background=dark
 colorscheme molotov
 " }}}
 
@@ -78,6 +78,8 @@ set wrapscan
 set synmaxcol=800
 set title
 set linebreak
+set number
+set guifont=Source\ Code\ Pro:h14
 " }}}
 
 " Local directories 
@@ -248,9 +250,6 @@ imap <PageDown> <C-O><C-D>
 
 " Filetypes setup
 " {{{
-set relativenumber " Use relative line numbers. Current line is still in status bar.
-au BufReadPost,BufNewFile * set relativenumber
-
 filetype plugin indent on
 
 " JSON
@@ -274,6 +273,7 @@ au BufRead,BufNewFile .zsh_rc,.functions,.commonrc,.aliases set ft=zsh
 " Set syntax highlight
 autocmd BufEnter *.ctp set filetype=php
 autocmd BufEnter *.md set filetype=markdown
+autocmd BufEnter *.markdown set filetype=markdown
 autocmd BufEnter *.less set filetype=css
 autocmd BufEnter *.scss set filetype=css
 autocmd BufEnter *.asc set filetype=javascript
@@ -303,7 +303,7 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 " airline.vim
 " {{{
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 1
 " }}}
 "
