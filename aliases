@@ -12,6 +12,7 @@ alias dl="open $HOME/Downloads"
 alias db="cd $HOME/Dropbox"
 alias purge="sudo purge" # free my resources (needs Xcode)
 alias ta="tmux attach -t" # shorten the pain
+alias vim="nvim"
 
 # Edit the dotfiles
 alias vimconf="mvim ~/dotfiles/.vimrc"
