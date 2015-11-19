@@ -1,1 +1,1 @@
-. nvimrc
+source nvimrc

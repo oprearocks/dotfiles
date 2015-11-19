@@ -26,7 +26,9 @@ Plug 'heavenshell/vim-jsdoc'
 Plug 'pangloss/vim-javascript'
 Plug 'junegunn/vim-easy-align'
 Plug 'fatih/vim-go'
-Plug 'chriskempson/base16-vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'sjl/badwolf'
+Plug 'cakebaker/scss-syntax.vim'
 call plug#end()
 " }}}
 "
@@ -38,7 +40,7 @@ endif
 " Colorscheme
 " {{{
 set background=dark
-colorscheme solarized
+colorscheme badwolf
 " }}}
 
 let javascript_enable_domhtmlcss=1
@@ -82,12 +84,6 @@ set number
 set guifont=Source\ Code\ Pro:h14
 " }}}
 
-" Local directories 
-" {{{
-set backupdir=~/.nvim/backups
-set directory=~/.nvim/swaps
-set undodir=~/.nvim/undo
-" }}}
 
 " Change mapleader
 " {{{
@@ -96,9 +92,9 @@ let mapleader=","
 
 " Backups
 " {{{
-set undodir=~/.vim/tmp/undo/     " undo files
-set backupdir=~/.vim/tmp/backup/ " backups
-set directory=~/.vim/tmp/swap/  " swap files
+set backupdir=~/.config/nvim/backups
+set directory=~/.config/nvim/swaps
+set undodir=~/.config/nvim/undo
 
 " Make those folders automatically if they don't already exist.
 if !isdirectory(expand(&undodir))
@@ -171,7 +167,7 @@ vmap <D-]> >gv
 set foldcolumn=0
 set foldenable
 set foldlevel=0
-set foldmethod=marker
+set foldmethod=manual
 set foldtext=FoldText()
 " }}}
 
@@ -275,7 +271,8 @@ autocmd BufEnter *.ctp set filetype=php
 autocmd BufEnter *.md set filetype=markdown
 autocmd BufEnter *.markdown set filetype=markdown
 autocmd BufEnter *.less set filetype=css
-autocmd BufEnter *.scss set filetype=css
+autocmd BufRead,BufNewFile *.scss set filetype=scss.css
+autocmd FileType scss set iskeyword+=-
 autocmd BufEnter *.asc set filetype=javascript
 autocmd BufEnter *.as set filetype=javascript
 autocmd BufEnter *.ds set filetype=javascript
