@@ -1,4 +1,4 @@
-set shell=/bin/bash
+set shell=/usr/local/bin/fish
 
 " ==== PLUGIN INSTALLATION ===
 " {{{
@@ -10,6 +10,7 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'rizzatti/funcoo.vim'
 Plug 'mattn/emmet-vim'
 Plug 'mattn/gist-vim'
+Plug 'tpope/vim-rails'
 Plug 'chrisbra/histwin.vim'
 Plug 'Keithbsmiley/investigate.vim'
 Plug 'scrooloose/syntastic'
@@ -29,6 +30,8 @@ Plug 'fatih/vim-go'
 Plug 'altercation/vim-colors-solarized'
 Plug 'sjl/badwolf'
 Plug 'cakebaker/scss-syntax.vim'
+Plug 'carlson-erik/wolfpack'
+Plug 'whatyouhide/vim-gotham'
 call plug#end()
 " }}}
 "
@@ -40,7 +43,7 @@ endif
 " Colorscheme
 " {{{
 set background=dark
-colorscheme badwolf
+colorscheme solarized
 " }}}
 
 let javascript_enable_domhtmlcss=1
@@ -52,8 +55,10 @@ set cc=101
 set noswapfile
 set backup
 set clipboard=unnamed
-set nowrap
-set textwidth=99
+set wrap
+set linebreak
+set list
+set textwidth=0
 set formatoptions=
 set formatoptions+=c " Format comments
 set formatoptions+=r " Continue comments by default
@@ -66,7 +71,7 @@ set formatoptions+=1 " Break before 1-letter words
 set gdefault " By default add g flag to search/replace. Add g to toggle.
 set hidden " When a buffer is brought to foreground, remember undo history and marks.
 set history=500 " Increase history from 20 default to 1000
-set shiftwidth=4 " Indent by 4 spaces
+set shiftwidth=2 " Indent by 2 spaces
 set smarttab
 set tabstop=4
 set softtabstop=4
@@ -76,12 +81,10 @@ set suffixes=.bak,~,.swp,.swo,.o,.d,.info,.aux,.log,.dvi,.pdf,.bin,.bbl,.blg,.br
 set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js
 set wildignore+=*/smarty/*,*/vendor/*,*/node_modules/*,*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*,*/log/*,*/tmp/*,*/build/*,*/ckeditor/*
 set winminheight=0
-set wrapscan
 set synmaxcol=800
 set title
-set linebreak
 set number
-set guifont=Source\ Code\ Pro:h14
+set guifont=Monaco:h14
 " }}}
 
 
