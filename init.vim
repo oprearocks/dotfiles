@@ -13,7 +13,7 @@ Plug 'mattn/gist-vim'
 Plug 'tpope/vim-rails'
 Plug 'chrisbra/histwin.vim'
 Plug 'Keithbsmiley/investigate.vim'
-Plug 'scrooloose/syntastic'
+Plug 'benekastah/neomake'
 Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle' }
 Plug 'tomtom/tcomment_vim'
 Plug 'Lokaltog/vim-easymotion'
@@ -28,10 +28,13 @@ Plug 'pangloss/vim-javascript'
 Plug 'junegunn/vim-easy-align'
 Plug 'fatih/vim-go'
 Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'nanotech/jellybeans.vim'
 Plug 'sjl/badwolf'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'carlson-erik/wolfpack'
 Plug 'whatyouhide/vim-gotham'
+Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 call plug#end()
 " }}}
 "
@@ -42,11 +45,13 @@ endif
 
 " Colorscheme
 " {{{
-set background=dark
-colorscheme solarized
+set background=light
+colorscheme tomorrow
 " }}}
 
 let javascript_enable_domhtmlcss=1
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_open_list = 2
 
 " ==== EDITOR SETUP ====
 " {{{
@@ -132,6 +137,11 @@ map <Leader>ls :buffers<CR>
 " Close Quickfix window (,qq)
 " {{{
 map <leader>qq :close<CR>
+" }}}
+
+" Close llist
+" {{{
+map <leader>lc :lclose<CR>
 " }}}
 "
 " NERD Commenter
@@ -282,6 +292,7 @@ autocmd BufEnter *.ds set filetype=javascript
 autocmd BufEnter *.es6 set filetype=javascript
 autocmd BufEnter *.json set filetype=javascript
 autocmd BufEnter *.ejs set filetype=html
+autocmd BufWritePost * Neomake
 " }}}
 
 " Only show cursorline in the current window and in normal mode.
