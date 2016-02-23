@@ -3,7 +3,8 @@ set shell=/usr/local/bin/fish
 " ==== PLUGIN INSTALLATION ===
 " {{{
 call plug#begin()
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'rking/ag.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'kien/rainbow_parentheses.vim'
@@ -46,7 +47,7 @@ endif
 " Colorscheme
 " {{{
 set background=light
-colorscheme tomorrow
+colorscheme github
 " }}}
 
 let javascript_enable_domhtmlcss=1
@@ -76,10 +77,10 @@ set formatoptions+=1 " Break before 1-letter words
 set gdefault " By default add g flag to search/replace. Add g to toggle.
 set hidden " When a buffer is brought to foreground, remember undo history and marks.
 set history=500 " Increase history from 20 default to 1000
+set expandtab
 set shiftwidth=2 " Indent by 2 spaces
+set softtabstop=2
 set smarttab
-set tabstop=4
-set softtabstop=4
 set splitbelow
 set splitright
 set suffixes=.bak,~,.swp,.swo,.o,.d,.info,.aux,.log,.dvi,.pdf,.bin,.bbl,.blg,.brf,.cb,.dmg,.exe,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyd,.dll
