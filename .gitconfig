@@ -1,13 +1,14 @@
-[user]
-	name = Adrian Oprea
-	email = opreaadriangeorge@gmail.com
+[include]
+	# For username / creds / etc
+	path = ~/.gitconfig.local
+
 [alias]
 	up = pull
 	p = push
-    # Show git diff for whatever file (very useful for *wildcard filenames)
+	# Show git diff for whatever file (very useful for *wildcard filenames)
 	df = diff --color --color-words --abbrev -- $1
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
-    lgs = log --stat
+	lgs = log --stat
 	# View abbreviated SHA, description, and history graph of the latest 20 commits
 	l = log --pretty=oneline -n 20 --graph --abbrev-commit
 	# View the current working tree status using the short format
@@ -66,51 +67,44 @@
 	untracked = cyan
 [merge]
 	log = true
-	tool = diffmerge
+	tool = opendiff
+
 [url "git@github.com:"]
 	insteadOf = "gh:"
+	insteadOf = "git://github.com"
+	insteadOf = "https://github.com/"
 	pushInsteadOf = "github:"
 	pushInsteadOf = "git://github.com/"
-[url "git://github.com/"]
-	insteadOf = "github:"
+	pushInsteadOf = "https://github.com/"
 [url "git@gist.github.com:"]
 	insteadOf = "gst:"
 	pushInsteadOf = "gist:"
 	pushInsteadOf = "git://gist.github.com/"
-[url "git://gist.github.com/"]
-	insteadOf = "gist:"
+	pushInsteadOf = "https://gist.github.com/"
 
 # Any GitHub repo with my username should be checked out r/w by default
 # http://rentzsch.tumblr.com/post/564806957/public-but-hackable-git-submodules
 [url "git@github.com:opreaadrian/"]
-  insteadOf = "git://github.com/opreaadrian/"
-[credential]
-	helper = osxkeychain
+	insteadOf = "git://github.com/opreaadrian/"
 [push]
 	default = simple
 
 [filter "media"]
-  clean  = git-media-clean %f
-  smudge = git-media-smudge %f
+	clean  = git-media-clean %f
+	smudge = git-media-smudge %f
 
 [difftool "diffconflicts"]
-  cmd = diffconflicts mvim $BASE $LOCAL $REMOTE $MERGED
+	cmd = diffconflicts mvim $BASE $LOCAL $REMOTE $MERGED
 
 [mergetool "diffconflicts"]
-  cmd           = diffconflicts mvim $BASE $LOCAL $REMOTE $MERGED
-  trustExitCode = true
-  keepBackup    = false
+	cmd           = diffconflicts mvim $BASE $LOCAL $REMOTE $MERGED
+	trustExitCode = true
+	keepBackup    = false
 
 [mergetool]
-	keepBackup = false
+	keepBackup    = false
 
 [filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
 	required = true
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /opt/homebrew-cask/Caskroom/sourcetree/2.1/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
