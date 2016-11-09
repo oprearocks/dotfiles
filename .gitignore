@@ -1,17 +1,30 @@
-*.scssc
-.sass-cache
-build_tool
+# Neovim dirs
+nvim/undo
+nvim/backups
+nvim/swaps/*
+
+# Folder view configuration files
 .DS_Store
-node_modules
-*.scssc
-.DS_Store
+Desktop.ini
+
 node_modules
 bower_components
-.vim/bundle
-.vim/tmp/undo/**/*
-.vim/tmp/backup/**/*
-.vim/tmp/swap/**/*
-adrianoprea.properties
-.invrc
-eclipse_workspace/
-vim
+
+# Thumbnail cache files
+._*
+Thumbs.db
+
+# Files that might appear on external disks
+.Spotlight-V100
+.Trashes
+
+# Compiled Python files
+*.pyc
+
+# fish shell
+fishd.*
+.config/fish/fish_history
+fish/fish_history
+
+# git credential file
+.gitconfig.local
