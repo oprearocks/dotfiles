@@ -1,53 +1,13 @@
-set shell=/usr/local/bin/fish
+set shell=/usr/local/bin/fish"
 
-" ==== PLUGIN INSTALLATION ===
-" {{{
-call plug#begin()
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'rking/ag.vim'
-Plug 'kien/ctrlp.vim'
-Plug 'kien/rainbow_parentheses.vim'
-Plug 'rizzatti/funcoo.vim'
-Plug 'mattn/emmet-vim'
-Plug 'mattn/gist-vim'
-Plug 'tpope/vim-rails'
-Plug 'chrisbra/histwin.vim'
-Plug 'Keithbsmiley/investigate.vim'
-Plug 'benekastah/neomake'
-Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle' }
-Plug 'tomtom/tcomment_vim'
-Plug 'Lokaltog/vim-easymotion'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'edsono/vim-matchit'
-Plug 'heavenshell/vim-jsdoc'
-Plug 'pangloss/vim-javascript'
-Plug 'junegunn/vim-easy-align'
-Plug 'fatih/vim-go'
-Plug 'altercation/vim-colors-solarized'
-Plug 'chriskempson/vim-tomorrow-theme'
-Plug 'nanotech/jellybeans.vim'
-Plug 'sjl/badwolf'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'carlson-erik/wolfpack'
-Plug 'whatyouhide/vim-gotham'
-Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
-call plug#end()
-" }}}
-"
-
-if $TERM == 'xterm-256color'
-    set t_Co=256
-endif
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " Colorscheme
 " {{{
-set background=light
-colorscheme github
+set t_Co=256
+set background=dark
+syntax on
+colorscheme molotov
 " }}}
 
 let javascript_enable_domhtmlcss=1
@@ -362,32 +322,98 @@ let NERDTreeDirArrows = 1
 let NERDChristmasTree = 0
 let NERDTreeChDirMode = 2
 "}}}
-" CtrlP.vim
-" {{{
-let g:ctrlp_dont_split = 'NERD_tree_2'
-let g:ctrlp_map = '<c-f>'
-let g:ctrlp_switch_buffer = 'Et' " If open, focus on file don't open it twice
-let g:ctrlp_match_window_bottom = 1 " Show at top of window
-let g:ctrlp_working_path_mode = 2 " Smart path mode
-let g:ctrlp_mru_files = 1 " Enable Most Recently Used files feature
-let g:ctrlp_jump_to_buffer = 2 " Jump to tab AND buffer if already open
-let g:ctrlp_split_window = 1 " <CR> = New Tab
-let g:ctrlp_max_height = 30 " Don't let CtrlP get too big
 
-" Make CtrlP use ag for listing the files. Way faster and no useless files.
-" Without --hidden, it never finds .travis.yml since it starts with a dot
-let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
-let g:ctrlp_use_caching = 0
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+" Notes.vim {{{
+augroup notes_config
+  autocmd!
+  let g:notes_directories = ['~/Google\ Drive/Notes']
+augroup END
 " }}}
 
-" ag.vim(Silver searcher settings)
-" {{{
-map <leader>a :Ag!<space>
-map <leader>A :Ag! "<C-r>=expand('<cword>')<CR>"
+" CtrlP.vim {{{
+augroup ctrlp_config
+  autocmd!
+  let g:ctrlp_clear_cache_on_exit = 0 " Do not clear filenames cache, to improve CtrlP startup
+  let g:ctrlp_lazy_update = 350 " Set delay to prevent extra search
+  let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' } " Use python fuzzy matcher for better performance
+  let g:ctrlp_match_window_bottom = 0 " Show at top of window
+  let g:ctrlp_max_files = 0 " Set no file limit, we are building a big project
+  let g:ctrlp_switch_buffer = 'Et' " Jump to tab AND buffer if already open
+  let g:ctrlp_open_new_file = 'r' " Open newly created files in the current window
+  let g:ctrlp_open_multiple_files = 'ij' " Open multiple files in hidden buffers, and jump to the first one
+  let g:ctrlp_dont_split = 'NERD_tree_2'
+  let g:ctrlp_map = '<c-f>'
+augroup END
 " }}}
+
+" Ag.vim(Silver searcher settings)
+" {{{
+augroup ag_config
+  autocmd!
+
+  if executable("ag")
+
+    map <leader>a :Ag!<space>
+    map <leader>A :Ag! "<C-r>=expand('<cword>')<CR>"
+
+    " Note we extract the column as well as the file and line number
+    set grepprg=ag\ --nogroup\ --nocolor\ --column
+    set grepformat=%f:%l:%c%m
+
+    " Have the silver searcher ignore all the same things as wilgignore
+    let b:ag_command = 'ag %s -i --nocolor --nogroup'
+
+    for i in split(&wildignore, ",")
+      let i = substitute(i, '\*/\(.*\)/\*', '\1', 'g')
+      let b:ag_command = b:ag_command . ' --ignore "' . substitute(i, '\*/\(.*\)/\*', '\1', 'g') . '"'
+    endfor
+
+    let b:ag_command = b:ag_command . ' --hidden -g ""'
+    let g:ctrlp_user_command = b:ag_command
+  endif
+augroup END
+" }}}
+
+
 
 " autoclose.vim
 " {{{
 nmap <Leader>xa <Plug>ToggleAutoCloseMappings
+" }}}
+"
+" ==== PLUGIN INSTALLATION ===
+" {{{
+call plug#begin()
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'rking/ag.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --tern-completer' }
+Plug 'vim-scripts/fish.vim',   { 'for': 'fish' }
+Plug 'mattn/emmet-vim'
+Plug 'mattn/gist-vim'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'keith/investigate.vim'
+Plug 'benekastah/neomake'
+Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle' }
+Plug 'tomtom/tcomment_vim'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'ap/vim-css-color'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'heavenshell/vim-jsdoc'
+Plug 'pangloss/vim-javascript', { 'branch': 'develop' }
+Plug 'junegunn/vim-easy-align'
+Plug 'fatih/vim-go'
+Plug 'JulesWang/css.vim'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-notes'
+Plug 'mxw/vim-jsx'
+call plug#end()
 " }}}
