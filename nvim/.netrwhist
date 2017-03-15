@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/adrian/projects/oprea.rocks/source/layouts'
+let g:netrw_dirhist_2='/Users/adrian/projects/oprea.rocks/source'
+let g:netrw_dirhist_3='/Users/adrian/projects/oprea.rocks'
+let g:netrw_dirhist_4='/Users/adrian/projects/usac-barcode'
+let g:netrw_dirhist_5='/Users/adrian/projects/oprea.rocks'
+let g:netrw_dirhist_6='/Users/adrian/Google Drive/Writing/Load Balancing Websocket-enabled Node.js Apps with Nginx and Docker'
+let g:netrw_dirhist_7='/Users/adrian/projects/book-research/quote-stream'

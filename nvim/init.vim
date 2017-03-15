@@ -2,12 +2,47 @@ set shell=/usr/local/bin/fish"
 
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
+" ==== PLUGIN INSTALLATION ===
+" {{{
+call plug#begin()
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'rking/ag.vim'
+Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'vim-scripts/fish.vim',   { 'for': 'fish' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --tern-completer' }
+Plug 'mattn/emmet-vim'
+Plug 'mattn/gist-vim'
+Plug 'tpope/vim-markdown',     { 'for': 'markdown' }
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-surround'
+Plug 'keith/investigate.vim'
+Plug 'benekastah/neomake'
+Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle' }
+Plug 'tomtom/tcomment_vim'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'ap/vim-css-color'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'heavenshell/vim-jsdoc'
+Plug 'pangloss/vim-javascript'
+Plug 'junegunn/vim-easy-align'
+Plug 'fatih/vim-go'
+Plug 'JulesWang/css.vim'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'mxw/vim-jsx'
+Plug 'GertjanReynaert/cobalt2-vim-theme'
+call plug#end()
+" }}}
+
 " Colorscheme
 " {{{
 set t_Co=256
 set background=dark
 syntax on
-colorscheme molotov
+colorscheme cobalt2
 " }}}
 
 let javascript_enable_domhtmlcss=1
@@ -341,8 +376,8 @@ augroup ctrlp_config
   let g:ctrlp_max_files = 0 " Set no file limit, we are building a big project
   let g:ctrlp_switch_buffer = 'Et' " Jump to tab AND buffer if already open
   let g:ctrlp_open_new_file = 'r' " Open newly created files in the current window
-  let g:ctrlp_open_multiple_files = 'ij' " Open multiple files in hidden buffers, and jump to the first one
   let g:ctrlp_dont_split = 'NERD_tree_2'
+  let g:ctrlp_open_multiple_files = 'ij' " Open multiple files in hidden buffers, and jump to the first one
   let g:ctrlp_map = '<c-f>'
 augroup END
 " }}}
@@ -382,38 +417,3 @@ augroup END
 nmap <Leader>xa <Plug>ToggleAutoCloseMappings
 " }}}
 "
-" ==== PLUGIN INSTALLATION ===
-" {{{
-call plug#begin()
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'rking/ag.vim'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'FelikZ/ctrlp-py-matcher'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --tern-completer' }
-Plug 'vim-scripts/fish.vim',   { 'for': 'fish' }
-Plug 'mattn/emmet-vim'
-Plug 'mattn/gist-vim'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'keith/investigate.vim'
-Plug 'benekastah/neomake'
-Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle' }
-Plug 'tomtom/tcomment_vim'
-Plug 'Lokaltog/vim-easymotion'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'ap/vim-css-color'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'heavenshell/vim-jsdoc'
-Plug 'pangloss/vim-javascript', { 'branch': 'develop' }
-Plug 'junegunn/vim-easy-align'
-Plug 'fatih/vim-go'
-Plug 'JulesWang/css.vim'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-notes'
-Plug 'mxw/vim-jsx'
-call plug#end()
-" }}}
