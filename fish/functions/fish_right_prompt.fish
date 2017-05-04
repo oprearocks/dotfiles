@@ -1,0 +1,1 @@
+/Users/adrian/.config/fisherman/sol/fish_right_prompt.fish
