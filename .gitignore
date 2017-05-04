@@ -28,3 +28,6 @@ fish/fish_history
 
 # git credential file
 .gitconfig.local
+.netrwhist
+.vscode
+.chrome
