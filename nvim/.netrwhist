@@ -1,3 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
-let g:netrw_dirhist_1='/Users/adrian/projects/waydev/github-service'
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/adrian/projects/oprea.rocks'
+let g:netrw_dirhist_2='/Users/adrian/projects/oprea.rocks/source'
+let g:netrw_dirhist_3='/Users/adrian/projects/appticles/foreverfit-tv-mobile-app'
+let g:netrw_dirhist_4='/Users/adrian/projects/remonetize-web'

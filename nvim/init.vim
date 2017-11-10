@@ -33,16 +33,20 @@ Plug 'fatih/vim-go'
 Plug 'JulesWang/css.vim'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'mxw/vim-jsx'
-Plug 'GertjanReynaert/cobalt2-vim-theme'
+Plug 'mhartington/oceanic-next'
+Plug 'dracula/vim'
 call plug#end()
 " }}}
 
 " Colorscheme
 " {{{
 set t_Co=256
+if (has("termguicolors"))
+  set termguicolors
+endif
 set background=dark
+colorscheme dracula
 syntax on
-colorscheme cobalt2
 " }}}
 
 let javascript_enable_domhtmlcss=1
@@ -312,6 +316,7 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 " {{{
 let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='oceanicnext'
 " }}}
 "
 " EasyAlign.vim
@@ -369,6 +374,8 @@ augroup END
 " CtrlP.vim {{{
 augroup ctrlp_config
   autocmd!
+  let g:ctrlp_max_files=0
+  let g:ctrlp_max_depth=40
   let g:ctrlp_clear_cache_on_exit = 0 " Do not clear filenames cache, to improve CtrlP startup
   let g:ctrlp_lazy_update = 350 " Set delay to prevent extra search
   let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' } " Use python fuzzy matcher for better performance

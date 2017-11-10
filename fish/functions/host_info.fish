@@ -1,1 +1,0 @@
-/Users/adrian/.config/fisherman/host_info/host_info.fish

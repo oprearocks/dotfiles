@@ -18,7 +18,7 @@
 	# `git di $number` shows the diff between the state `$number` revisions ago and the current state
 	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
 	# Pull in remote changes for the current repository and all its submodules
-	p = !"git pull; git submodule foreach git pull origin master"
+	psub = !"git pull; git submodule foreach git pull origin master"
 	# Clone a repository including all submodules
 	c = clone --recursive
 	# Commit all changes
@@ -84,8 +84,8 @@
 
 # Any GitHub repo with my username should be checked out r/w by default
 # http://rentzsch.tumblr.com/post/564806957/public-but-hackable-git-submodules
-[url "git@github.com:opreaadrian/"]
-	insteadOf = "git://github.com/opreaadrian/"
+[url "git@github.com:oprearocks/"]
+	insteadOf = "git://github.com/oprearocks/"
 [push]
 	default = simple
 
@@ -105,9 +105,10 @@
 	keepBackup    = false
 
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
 	required = true
+	clean = git-lfs clean -- %f
 [user]
 	email = adrian@oprea.rocks
 	name = Adrian Oprea
