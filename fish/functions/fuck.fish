@@ -1,1 +1,1 @@
-/Users/adrian/.config/fisherman/thefuck/functions/fuck.fish
+/Users/adrianoprea/.config/fisherman/thefuck/functions/fuck.fish

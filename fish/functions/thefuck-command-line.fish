@@ -1,1 +1,1 @@
-/Users/adrian/.config/fisherman/thefuck/functions/thefuck-command-line.fish
+/Users/adrianoprea/.config/fisherman/thefuck/functions/thefuck-command-line.fish

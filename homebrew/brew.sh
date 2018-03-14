@@ -23,30 +23,20 @@ brew install gnu-sed --with-default-names
 # Bash 4
 # Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before running `chsh`.
 brew install bash
-brew tap homebrew/versions
 brew install bash-completion2
-
-brew install homebrew/completions/brew-cask-completion
 
 # generic colouriser  http://kassiopeia.juls.savba.sk/~garabik/software/grc/
 brew install grc
 
-# Install wget with IRI support
-brew install wget --with-iri
+# Install wget
+brew install wget --enable-iri
 
 # Install more recent versions of some OS X tools
 brew install vim --with-override-system-vi
-brew install neovim/neovim/neovim
-brew install homebrew/dupes/grep
-brew install homebrew/dupes/openssh
-brew install homebrew/dupes/screen
-
-
-# run this script when this file changes guy.
-brew install entr
-
-# github util. imho better than hub
-brew install gh
+brew install neovim
+brew install grep
+brew install openssh
+brew install screen
 
 
 # mtr - ping & traceroute. best.
@@ -73,11 +63,13 @@ brew install ffmpeg --with-libvpx
 
 brew install terminal-notifier
 
-brew install android-platform-tools
 brew install pidcat   # colored logcat guy
 
 brew install fish
 brew install zsh
-
+brew install ctop
+brew install htop
+brew install openssl@1.1
+brew install yarn
 # Remove outdated versions from the cellar
 brew cleanup

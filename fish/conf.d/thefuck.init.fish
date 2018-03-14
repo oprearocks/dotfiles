@@ -1,1 +1,1 @@
-/Users/adrian/.config/fisherman/thefuck/init.fish
+/Users/adrianoprea/.config/fisherman/thefuck/init.fish
