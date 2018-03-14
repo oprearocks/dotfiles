@@ -11,7 +11,7 @@ Plug 'rking/ag.vim'
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-scripts/fish.vim',   { 'for': 'fish' }
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --tern-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --clang-completer --tern-completer' }
 Plug 'mattn/emmet-vim'
 Plug 'mattn/gist-vim'
 Plug 'tpope/vim-markdown',     { 'for': 'markdown' }
