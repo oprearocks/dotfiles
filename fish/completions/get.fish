@@ -1,1 +1,1 @@
-/Users/adrian/.config/fisherman/get/completions/get.fish
+/Users/adrianoprea/.config/fisherman/get/completions/get.fish

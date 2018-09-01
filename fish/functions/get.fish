@@ -1,1 +1,1 @@
-/Users/adrian/.config/fisherman/get/functions/get.fish
+/Users/adrianoprea/.config/fisherman/get/functions/get.fish

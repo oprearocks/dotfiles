@@ -1,1 +1,1 @@
-/Users/adrian/.config/fisherman/await/functions/await.fish
+/Users/adrianoprea/.config/fisherman/await/functions/await.fish

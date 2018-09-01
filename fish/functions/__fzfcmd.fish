@@ -1,1 +1,1 @@
-/Users/adrian/.config/fisherman/fzf/functions/__fzfcmd.fish
+/Users/adrianoprea/.config/fisherman/fzf/functions/__fzfcmd.fish

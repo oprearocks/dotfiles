@@ -1,1 +1,1 @@
-/Users/adrian/.config/fisherman/bass/functions/bass.fish
+/Users/adrianoprea/.config/fisherman/bass/functions/bass.fish
