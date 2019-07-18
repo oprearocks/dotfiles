@@ -1,4 +1,4 @@
-set shell=/usr/local/bin/fish"
+set shell=/usr/local/bin/fish
 
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
@@ -33,7 +33,6 @@ Plug 'fatih/vim-go'
 Plug 'JulesWang/css.vim'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'mxw/vim-jsx'
-Plug 'mhartington/oceanic-next'
 Plug 'dracula/vim'
 call plug#end()
 " }}}
@@ -316,7 +315,7 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 " {{{
 let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='oceanicnext'
+" let g:airline_theme='oceanicnext'
 " }}}
 "
 " EasyAlign.vim

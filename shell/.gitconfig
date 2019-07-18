@@ -52,6 +52,7 @@
 	attributesfile = ~/.gitattributes
 	autocrlf = input
 	editor = nvim
+	ignorecase = false
 [color "branch"]
 	current = yellow reverse
 	local = yellow
