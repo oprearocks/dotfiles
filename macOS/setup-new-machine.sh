@@ -29,38 +29,9 @@ cp -R ~/.gnupg ~/migration/home
 
 cp /Library/Preferences/SystemConfiguration/com.apple.airport.preferences.plist ~/migration  # wifi
 
-cp ~/Library/Preferences/net.limechat.LimeChat.plist ~/migration
-cp ~/Library/Preferences/com.tinyspeck.slackmacgap.plist ~/migration
-
-cp -R ~/Library/Services ~/migration # automator stuff
-
-cp -R ~/Documents ~/migration
-
 cp ~/.bash_history ~/migration # back it up for fun?
 
 cp ~/.gitconfig.local ~/migration
-
-cp ~/.z ~/migration # z history file.
-
-# sublime text settings
-cp "~/Library/Application Support/Sublime Text 3/Packages" ~/migration
-
-
-# iTerm settings.
-# Prefs, General, Use settings from Folder
-
-# Finder settings and TotalFinder settings
-#   Not sure how to do this yet. Really want to.
-
-# Timestats chrome extension stats
-#   chrome-extension://ejifodhjoeeenihgfpjijjmpomaphmah/options.html#_options
-# 	gotta export into JSON through devtools:
-#     copy(JSON.stringify(localStorage, null, '  '))
-#     pbpaste > timestats-canary.json.txt
-
-# Current Chrome tabs via OneTab
-# software licenses like sublimetext
-
 
 ### end of old machine backup
 ##############################################################################################################
@@ -153,19 +124,6 @@ git clone https://github.com/rupa/z.git ~/code/z
 # z is hooked up in .bash_profile
 
 
-# github.com/thebitguru/play-button-itunes-patch
-# disable itunes opening on media keys
-git clone https://github.com/thebitguru/play-button-itunes-patch ~/code/play-button-itunes-patch
-
-
-# my magic photobooth symlink -> dropbox. I love it.
-# 	 + first move Photo Booth folder out of Pictures
-# 	 + then start Photo Booth. It'll ask where to put the library.
-# 	 + put it in Dropbox/public
-# 	* Now… you can record photobooth videos quickly and they upload to dropbox DURING RECORDING
-# 	* then you grab public URL and send off your video message in a heartbeat.
-
-
 # for the c alias (syntax highlighted cat)
 sudo easy_install Pygments
 
@@ -189,27 +147,6 @@ ln -sf "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/bin/su
 
 ###
 ##############################################################################################################
-
-
-
-##############################################################################################################
-### remaining configuration
-###
-
-# go read mathias, paulmillr, gf3, alraa's dotfiles to see what's worth stealing.
-
-# prezto and antigen communties also have great stuff
-#   github.com/sorin-ionescu/prezto/blob/master/modules/utility/init.zsh
-
-# set up osx defaults
-#   maybe something else in here https://github.com/hjuutilainen/dotfiles/blob/master/bin/osx-user-defaults.sh
-sh .osx
-
-# setup and run Rescuetime!
-
-###
-##############################################################################################################
-
 
 
 ##############################################################################################################
