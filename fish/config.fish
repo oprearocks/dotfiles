@@ -1,4 +1,5 @@
 source ~/.config/fish/functions/z.fish
+set PATH /opt/homebrew/local/bin $PATH
 
 thefuck --alias | source 
 
@@ -8,4 +9,3 @@ rvm default
 rvm default
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
-set PATH /opt/homebrew/bin $PATH
