@@ -40,11 +40,11 @@ call plug#end()
 " Colorscheme
 " {{{
 set t_Co=256
-if (has("termguicolors"))
-  set termguicolors
-endif
+" if (has("termguicolors"))
+"   set termguicolors
+" endif
 set background=dark
-colorscheme dracula
+" colorscheme dracula
 syntax on
 " }}}
 
@@ -88,7 +88,6 @@ set winminheight=0
 set synmaxcol=800
 set title
 set number
-set guifont=Monaco:h14
 " }}}
 
 

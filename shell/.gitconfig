@@ -51,7 +51,7 @@
 	excludesfile = /Users/adrian/.gitignore_global
 	attributesfile = ~/.gitattributes
 	autocrlf = input
-	editor = nvim
+	editor = code --wait
 	ignorecase = false
 [color "branch"]
 	current = yellow reverse
@@ -113,3 +113,8 @@
 [user]
 	email = adrian@oprea.rocks
 	name = Adrian Oprea
+	signingkey = BC532450041435FA
+[credential]
+	helper = osxkeychain
+[gpg]
+	program = /usr/local/bin/gpg
