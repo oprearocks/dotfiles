@@ -17,7 +17,7 @@ brew install moreutils
 brew install findutils
 
 # GNU `sed`, overwriting the built-in `sed`
-brew install gnu-sed --with-default-names
+brew install gnu-sed
 
 
 # Bash 4
@@ -29,23 +29,14 @@ brew install bash-completion2
 brew install grc
 
 # Install wget
-brew install wget --enable-iri
+brew install wget
 
 # Install more recent versions of some OS X tools
-brew install vim --with-override-system-vi
+brew install vim
 brew install neovim
 brew install grep
 brew install openssh
 brew install screen
-
-
-# mtr - ping & traceroute. best.
-brew install mtr
-
-    # allow mtr to run without sudo
-    mtrlocation=$(brew info mtr | grep Cellar | sed -e 's/ (.*//') #  e.g. `/Users/paulirish/.homebrew/Cellar/mtr/0.86`
-    sudo chmod 4755 $mtrlocation/sbin/mtr
-    sudo chown root $mtrlocation/sbin/mtr
 
 
 # Install other useful binaries
@@ -53,13 +44,12 @@ brew install the_silver_searcher
 brew install fzf
 
 brew install git
-brew install imagemagick --with-webp
+brew install imagemagick
 brew install node # This installs `npm` too using the recommended installation method
-brew install pv
 brew install rename
 brew install tree
 brew install zopfli
-brew install ffmpeg --with-libvpx
+brew install ffmpeg
 
 brew install terminal-notifier
 
