@@ -21,12 +21,6 @@ sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.serve
 # General UI/UX                                                               #
 ###############################################################################
 
-# Set standby delay to 24 hours (default is 1 hour)
-sudo pmset -a standbydelay 86400
-
-# Increase window resize speed for Cocoa applications
-defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
-
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
@@ -74,9 +68,6 @@ sudo pmset -a hibernatemode 0
   # …and make sure it can’t be rewritten
   # sudo chflags uchg /Private/var/vm/sleepimage
 
-# Disable the sudden motion sensor as it’s not useful for SSDs
-sudo pmset -a sms 0
-
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
@@ -109,7 +100,7 @@ defaults write com.apple.BezelServices kDimTime -int 300
 # defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 # I LOVE ME SOME speling autocorrect!!!
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool true
+# defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool true
 
 
 ###############################################################################
@@ -117,14 +108,11 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool true
 ###############################################################################
 
 
-# Save screenshots to the desktop
+# Save screenshots to Documents
 defaults write com.apple.screencapture location -string "${HOME}/Documents/Screenshots"
 
-# Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
-defaults write com.apple.screencapture type -string "png"
-
-# Hide all desktop icons because who need 'em'
-# defaults write com.apple.finder CreateDesktop -bool false
+# Save screenshots in JPG
+defaults write com.apple.screencapture type -string "jpg"
 
 # Disable shadow in screenshots
 defaults write com.apple.screencapture disable-shadow -bool true
@@ -196,7 +184,7 @@ defaults write com.apple.dock tilesize -int 36
 defaults write com.apple.dock mineffect -string "scale"
 
 # Minimize windows into their application’s icon
-defaults write com.apple.dock minimize-to-application -bool false
+# defaults write com.apple.dock minimize-to-application -bool true
 
 # Enable spring loading for all Dock items
 defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
@@ -271,10 +259,10 @@ defaults write com.apple.Safari WebKitTabToLinksPreferenceKey -bool true
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks -bool true
 
 # Show the full URL in the address bar (note: this still hides the scheme)
-defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
+# defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
 
 # Set Safari’s home page to `about:blank` for faster loading
-defaults write com.apple.Safari HomePage -string "about:blank"
+# defaults write com.apple.Safari HomePage -string "about:blank"
 
 # Prevent Safari from opening ‘safe’ files automatically after downloading
 defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
@@ -357,29 +345,12 @@ defaults write com.apple.appstore WebKitDeveloperExtras -bool true
 defaults write com.apple.appstore ShowDebugMenu -bool true
 
 ###############################################################################
-# Transmission.app                                                            #
-###############################################################################
-
-
-# Don’t prompt for confirmation before downloading
-defaults write org.m0k.transmission DownloadAsk -bool false
-
-# Trash original torrent files
-defaults write org.m0k.transmission DeleteOriginalTorrent -bool true
-
-# Hide the donate message
-defaults write org.m0k.transmission WarningDonate -bool false
-# Hide the legal disclaimer
-defaults write org.m0k.transmission WarningLegal -bool false
-
-###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 
-for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
-	"Dock" "Finder" "Google Chrome" "Google Chrome Canary" "Mail" "Messages" \
-	"Opera" "Safari" "SizeUp" "Spectacle" "SystemUIServer" "Terminal" \
-	"Transmission" "Twitter" "iCal"; do
+for app in "Activity Monitor" "cfprefsd" \
+	"Dock" "Finder" "Google Chrome" \
+	"Safari" "SizeUp" "Spectacle" "SystemUIServer" "Terminal"; do
 	killall "${app}" > /dev/null 2>&1
 done
 echo "Done. Note that some of these changes require a logout/restart to take effect."

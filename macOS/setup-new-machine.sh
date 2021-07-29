@@ -21,17 +21,9 @@ npm list -g --depth=0 	> npm-g-list.txt
 
 # let's hold on to these
 
-cp ~/.extra ~/migration/home
 cp ~/.z ~/migration/home
-
 cp -R ~/.ssh ~/migration/home
 cp -R ~/.gnupg ~/migration/home
-
-cp /Library/Preferences/SystemConfiguration/com.apple.airport.preferences.plist ~/migration  # wifi
-
-cp ~/.bash_history ~/migration # back it up for fun?
-
-cp ~/.gitconfig.local ~/migration
 
 ### end of old machine backup
 ##############################################################################################################
@@ -80,11 +72,7 @@ fi
 
 
 ##############################################################################################################
-### homebrew!
-
-# (if your machine has /usr/local locked down (like google's), you can do this to place everything in ~/.homebrew
-mkdir $HOME/.homebrew && curl -L https://github.com/mxcl/homebrew/tarball/master | tar xz --strip 1 -C $HOME/.homebrew
-export PATH=$HOME/.homebrew/bin:$HOME/.homebrew/sbin:$PATH
+## Install homebrew
 
 # install all the things
 ./brew.sh
@@ -99,11 +87,6 @@ export PATH=$HOME/.homebrew/bin:$HOME/.homebrew/sbin:$PATH
 ##############################################################################################################
 ### install of common things
 ###
-
-# github.com/jamiew/git-friendly
-# the `push` command which copies the github compare URL to my clipboard is heaven
-bash < <( curl https://raw.github.com/jamiew/git-friendly/master/install.sh)
-
 
 # Type `git open` to open the GitHub page or website for a repository.
 npm install -g git-open
@@ -127,13 +110,6 @@ git clone https://github.com/rupa/z.git ~/code/z
 # for the c alias (syntax highlighted cat)
 sudo easy_install Pygments
 
-
-# change to bash 4 (installed by homebrew)
-BASHPATH=$(brew --prefix)/bin/bash
-#sudo echo $BASHPATH >> /etc/shells
-sudo bash -c 'echo $(brew --prefix)/bin/bash >> /etc/shells'
-chsh -s $BASHPATH # will set for current user only.
-echo $BASH_VERSION # should be 4.x not the old 3.2.X
 # Later, confirm iterm settings aren't conflicting.
 
 
